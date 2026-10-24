@@ -64,6 +64,7 @@ export function validateReport(report) {
       if (!text(finding.route) || [390, 768, 1440].some(width => !refs.some(check => check?.kind === 'browser' && check.status === 'pass' && check.width === width && check.route === finding.route))) errors.push('Verified frontend findings require passing browser evidence at 390, 768 and 1440 for their route.');
     }
   }
+  for (const file of report.changed_files) if (!report.findings.some(finding => finding?.file === file && finding.status !== 'waived')) errors.push('Every changed file must map to an active finding.');
   const ready = report.mode === 'repair' && report.required_checks.length > 0 && report.required_checks.every(id => checks.get(id)?.status === 'pass') && !report.checks.some(check => check?.status === 'fail') && report.findings.every(finding => ['verified', 'waived'].includes(finding?.status));
   return result(ready);
 }
