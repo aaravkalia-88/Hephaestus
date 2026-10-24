@@ -1,0 +1,6 @@
+Hephaestus logo — 2026-10-24
+Generated with the built-in imagegen tool using a user-supplied face reference.
+Selected output copied without modification. Transparent PNG; the reference image is not distributed.
+
+Final prompt:
+Use case: logo-brand. The attached image is a FACE REFERENCE, not an image to reproduce as a whole. Create a new, original logo for Hephaestus based on this man's face: frontal stern expression, heavy furrowed brow, strong broad nose, swept-back wavy hair and a substantial full beard. Show ONLY a compact head portrait, cropped below the beard. Reduce it to clean bold vector-style shapes and deliberate negative space, clear enough for a small GitHub README logo. Use a single solid violet #7c3aed, consistent with the current project, with transparent negative spaces and a genuinely transparent background. Center the portrait and fill most of the square with modest clear space. No torso, shoulders, hammer, throne, decorative frame, parchment, lettering, words, sparkles, gradients, glow, shadows, textures or 3D rendering. Preserve the reference face's recognizable hair, brow, nose and beard character while simplifying it into a strong crafted emblem.

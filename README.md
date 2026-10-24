@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/hephaestus-logo.png" alt="Hephaestus logo: a bearded forge god inspired by the supplied face reference" width="180" height="180">
+</p>
+
 # Hephaestus
 
 An installable skill for auditing and repairing existing frontends inside a coding agent. It combines the owner's 30-rule anti-slop policy with source evidence, scoped edits, real browser review, and honest verification statuses.
