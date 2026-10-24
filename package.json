@@ -4,6 +4,7 @@
   "type": "module",
   "engines": { "node": ">=22" },
   "scripts": {
+    "demo": "node evals/serve.mjs",
     "test": "node --test tests/*.test.mjs",
     "test:coverage": "node --test --experimental-test-coverage tests/*.test.mjs",
     "check": "node --check skills/hephaestus/scripts/check-report.mjs"
