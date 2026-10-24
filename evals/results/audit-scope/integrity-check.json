@@ -1,0 +1,41 @@
+{
+  "status": "pass",
+  "baseline": "sha256:0d39264e588c247025c480fa6d4c1349c0ba06e08de18ce08cd5af0d3ddabd29",
+  "files_added": [],
+  "files_removed": [],
+  "files_changed": [],
+  "before": [
+    {
+      "path": "App.tsx",
+      "bytes": 1008,
+      "sha256": "fbd8e961fd6c3b129f434aa5c63653de905222428cb6985bcacaf4aff12b15cf"
+    },
+    {
+      "path": "BRIEF.md",
+      "bytes": 548,
+      "sha256": "96dd3dd9324b4731ef200f8507a2986b7e356bf42825d3f875d5dc367a9e7fc9"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 268,
+      "sha256": "96c4cba2e6df88eadb74140c4a1c73c1b87b4b87f60cfc5ab7c50c0ee8188240"
+    }
+  ],
+  "after": [
+    {
+      "path": "App.tsx",
+      "bytes": 1008,
+      "sha256": "fbd8e961fd6c3b129f434aa5c63653de905222428cb6985bcacaf4aff12b15cf"
+    },
+    {
+      "path": "BRIEF.md",
+      "bytes": 548,
+      "sha256": "96dd3dd9324b4731ef200f8507a2986b7e356bf42825d3f875d5dc367a9e7fc9"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 268,
+      "sha256": "96c4cba2e6df88eadb74140c4a1c73c1b87b4b87f60cfc5ab7c50c0ee8188240"
+    }
+  ]
+}

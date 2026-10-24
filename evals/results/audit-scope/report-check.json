@@ -1,0 +1,63 @@
+{
+  "node_version": "v24.19.0",
+  "observations": [
+    {
+      "command": [
+        "node",
+        "skills/hephaestus/scripts/check-report.mjs",
+        "evals/results/audit-scope/report.json"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "valid": true,
+        "ready": false,
+        "counts": {
+          "FF-021": 1,
+          "FF-030": 2,
+          "FF-018": 1,
+          "FF-012": 1,
+          "FF-027": 1,
+          "FF-002": 1,
+          "FF-024": 1,
+          "FF-015": 1,
+          "FF-003": 1,
+          "FF-010": 1,
+          "FF-006": 1,
+          "FF-019": 1
+        },
+        "errors": []
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "skills/hephaestus/scripts/check-report.mjs",
+        "evals/results/audit-scope/report.json",
+        "--require-verified"
+      ],
+      "exit_code": 1,
+      "stdout": {
+        "valid": true,
+        "ready": false,
+        "counts": {
+          "FF-021": 1,
+          "FF-030": 2,
+          "FF-018": 1,
+          "FF-012": 1,
+          "FF-027": 1,
+          "FF-002": 1,
+          "FF-024": 1,
+          "FF-015": 1,
+          "FF-003": 1,
+          "FF-010": 1,
+          "FF-006": 1,
+          "FF-019": 1
+        },
+        "errors": []
+      },
+      "stderr": ""
+    }
+  ],
+  "meaning": "Structure is valid. This is an unresolved audit, not a completed verified repair. The checker does not execute or authenticate source or runtime evidence."
+}

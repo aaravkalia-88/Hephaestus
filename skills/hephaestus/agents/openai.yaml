@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hephaestus"
+  short_description: "Repair frontends with evidence and restraint"
+  default_prompt: "Use $hephaestus to audit this frontend and repair the approved issues while preserving its behavior and brand."

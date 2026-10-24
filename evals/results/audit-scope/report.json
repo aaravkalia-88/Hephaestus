@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "mode": "audit",
+  "baseline": "sha256:0d39264e588c247025c480fa6d4c1349c0ba06e08de18ce08cd5af0d3ddabd29",
+  "approved_files": [],
+  "changed_files": [],
+  "required_checks": [
+    "source-inventory",
+    "owner-brief",
+    "async-source",
+    "response-validation-source",
+    "form-source",
+    "accessibility-source",
+    "demo-destination",
+    "demo-provenance",
+    "testimonial-provenance",
+    "privacy-link-presence",
+    "privacy-policy-facts",
+    "design-source",
+    "pricing-brand-preservation",
+    "responsive-source",
+    "browser-390",
+    "browser-768",
+    "browser-1440",
+    "build",
+    "types",
+    "lint",
+    "tests",
+    "keyboard-focus-runtime",
+    "async-runtime",
+    "form-runtime",
+    "performance-runtime",
+    "project-unchanged"
+  ],
+  "checks": [
+    {
+      "id": "source-inventory",
+      "kind": "source",
+      "status": "pass",
+      "evidence": "rg --files --hidden listed exactly App.tsx, styles.css and BRIEF.md. All three were read with line numbers. No package manifest, lockfile, build config, tests, router or assets are present. Source evidence: evals/results/audit-scope/source-evidence.md; SHA-256 baseline: evals/results/audit-scope/baseline-manifest.json."
+    },
+    {
+      "id": "owner-brief",
+      "kind": "source",
+      "status": "pass",
+      "evidence": "BRIEF.md identifies a synthetic source-only fixture, forbids dependency installation, approves violet #7c3aed, and confirms Starter $9, Studio $29 and Team $79 as genuine plans. It leaves testimonial provenance, demo URL and privacy facts unknown."
+    },
+    {
+      "id": "async-source",
+      "kind": "async",
+      "status": "fail",
+      "evidence": "App.tsx:8-9,16: null renders no project feedback; the fetch chain has no rejection handler, response.ok guard, loading/error/empty message, or retry. Successful [] also renders nothing. Dynamic status announcements are absent. This is a source observation; no request was executed."
+    },
+    {
+      "id": "response-validation-source",
+      "kind": "source",
+      "status": "fail",
+      "evidence": "App.tsx:9,16 passes JSON directly to setData and calls data.map. useState<string[] | null> is a TypeScript annotation, not runtime response validation. Non-array JSON can reach a failing map call, and a non-string item can be an invalid React child. No endpoint result was observed."
+    },
+    {
+      "id": "form-source",
+      "kind": "interaction",
+      "status": "fail",
+      "evidence": "App.tsx:17 has a named email input and default submit button, with no action, method or onSubmit. Source provides no subscription integration or success/error UI. In a normal HTML document, omitted method defaults to GET and can place the email in the current-page query string; no browser submission or real collection was tested."
+    },
+    {
+      "id": "accessibility-source",
+      "kind": "accessibility",
+      "status": "fail",
+      "evidence": "The email input is validly nested in its label, controls are native, and Sparkles is aria-hidden. However, the async region has no status/error feedback or live-region semantics. Focus visibility, actual keyboard operation and contrast require a runtime and remain untested."
+    },
+    {
+      "id": "demo-destination",
+      "kind": "interaction",
+      "status": "fail",
+      "evidence": "App.tsx:13 renders <a href=\"#\">Live demo</a>. The fragment has no demo destination. This establishes a placeholder target from source; it does not establish whether a real demo exists elsewhere."
+    },
+    {
+      "id": "demo-provenance",
+      "kind": "provenance",
+      "status": "needs_review",
+      "evidence": "BRIEF.md supplies no live demonstration URL; no authentic demo or capture is included. Owner must provide the destination or an accurately described authentic preview."
+    },
+    {
+      "id": "testimonial-provenance",
+      "kind": "provenance",
+      "status": "needs_review",
+      "evidence": "App.tsx:14 claims \"It doubled our revenue.\" and cites \"Customer name pending\". BRIEF.md explicitly states provenance is unknown. The claim is unverified, not proven false."
+    },
+    {
+      "id": "privacy-link-presence",
+      "kind": "privacy",
+      "status": "fail",
+      "evidence": "App.tsx:17 presents an email collection form. The only anchor in App.tsx is Live demo at line 13; no privacy link, disclosure, or policy file exists in the complete three-file fixture. This is source-link presence, not legal assessment."
+    },
+    {
+      "id": "privacy-policy-facts",
+      "kind": "privacy",
+      "status": "needs_review",
+      "evidence": "BRIEF.md supplies no privacy-policy facts. Purpose, recipients, retention, operator and actual collection behavior cannot be established from the fixture. No legal text or promises were generated."
+    },
+    {
+      "id": "design-source",
+      "kind": "source",
+      "status": "fail",
+      "evidence": "styles.css:2 declares #ffffff and Inter first; line 5 applies 32px article rounding and a 0 24px 64px #0003 shadow. App.tsx:2,11 imports/renders decorative Lucide Sparkles; line 12 uses stock negation copy. These are source-level policy observations; perceived appearance and effective font are unmeasured."
+    },
+    {
+      "id": "pricing-brand-preservation",
+      "kind": "source",
+      "status": "pass",
+      "evidence": "App.tsx:5,15 and BRIEF.md establish three genuine pricing plans, not feature cards or arbitrary tiers. styles.css:1,3 uses approved violet on h1; no black canvas or purple glow is present. Neither the plan count nor approved violet is recorded as a defect."
+    },
+    {
+      "id": "responsive-source",
+      "kind": "source",
+      "status": "needs_review",
+      "evidence": "styles.css:4 fixes the Plans section at repeat(3, 1fr), with no media query in the supplied CSS. This is a narrow-screen review candidate, not proof of overflow or poor fit. The actual render at requested widths is unavailable."
+    },
+    {
+      "id": "browser-390",
+      "kind": "browser",
+      "status": "skipped",
+      "evidence": "runtime_unavailable: BRIEF.md says this is not a runnable application and has no installed dependencies, server or browser target. No manifest or entry HTML is supplied. No packages were installed and no server, screenshot or browser measurement was attempted. / is only the intended nominal entry route, not an observed route. Requested width: 390px.",
+      "width": 390,
+      "route": "/"
+    },
+    {
+      "id": "browser-768",
+      "kind": "browser",
+      "status": "skipped",
+      "evidence": "runtime_unavailable: BRIEF.md says this is not a runnable application and has no installed dependencies, server or browser target. No manifest or entry HTML is supplied. No packages were installed and no server, screenshot or browser measurement was attempted. / is only the intended nominal entry route, not an observed route. Requested width: 768px.",
+      "width": 768,
+      "route": "/"
+    },
+    {
+      "id": "browser-1440",
+      "kind": "browser",
+      "status": "skipped",
+      "evidence": "runtime_unavailable: BRIEF.md says this is not a runnable application and has no installed dependencies, server or browser target. No manifest or entry HTML is supplied. No packages were installed and no server, screenshot or browser measurement was attempted. / is only the intended nominal entry route, not an observed route. Requested width: 1440px.",
+      "width": 1440,
+      "route": "/"
+    },
+    {
+      "id": "build",
+      "kind": "build",
+      "status": "skipped",
+      "evidence": "No package.json, scripts, configuration, installed project dependencies or runnable test harness exists. No install, npx, build, compiler, lint or test command was attempted. Missing tooling is a fixture limitation, not a failing executed check."
+    },
+    {
+      "id": "types",
+      "kind": "types",
+      "status": "skipped",
+      "evidence": "No package.json, scripts, configuration, installed project dependencies or runnable test harness exists. No install, npx, build, compiler, lint or test command was attempted. Missing tooling is a fixture limitation, not a failing executed check."
+    },
+    {
+      "id": "lint",
+      "kind": "lint",
+      "status": "skipped",
+      "evidence": "No package.json, scripts, configuration, installed project dependencies or runnable test harness exists. No install, npx, build, compiler, lint or test command was attempted. Missing tooling is a fixture limitation, not a failing executed check."
+    },
+    {
+      "id": "tests",
+      "kind": "tests",
+      "status": "skipped",
+      "evidence": "No package.json, scripts, configuration, installed project dependencies or runnable test harness exists. No install, npx, build, compiler, lint or test command was attempted. Missing tooling is a fixture limitation, not a failing executed check."
+    },
+    {
+      "id": "keyboard-focus-runtime",
+      "kind": "accessibility",
+      "status": "skipped",
+      "evidence": "runtime_unavailable: no real DOM/browser target exists. Tab order, focus indicators, screen reader behavior and manual keyboard journey were not exercised."
+    },
+    {
+      "id": "async-runtime",
+      "kind": "async",
+      "status": "skipped",
+      "evidence": "runtime_unavailable: loading, success, empty, HTTP error, network rejection, malformed responses and safe retry were reviewed in source only; /api/projects was not called and no backend result is claimed."
+    },
+    {
+      "id": "form-runtime",
+      "kind": "interaction",
+      "status": "skipped",
+      "evidence": "runtime_unavailable: no email was entered or submitted. Subscription persistence, request destination, success/error feedback and actual URL behavior could not be verified."
+    },
+    {
+      "id": "performance-runtime",
+      "kind": "tests",
+      "status": "skipped",
+      "evidence": "runtime_unavailable: no load timing, bundle analysis, media loading, console/network observation, Lighthouse or automated accessibility scan was run."
+    },
+    {
+      "id": "project-unchanged",
+      "kind": "source",
+      "status": "pass",
+      "evidence": "Final project inventory and every file hash match the initial three-file snapshot sha256:0d39264e588c247025c480fa6d4c1349c0ba06e08de18ce08cd5af0d3ddabd29. No project paths were written; all artifacts are under the separate output directory. Comparison detail: evals/results/audit-scope/integrity-check.json."
+    }
+  ],
+  "findings": [
+    {
+      "id": "projects-async-states",
+      "rule_id": "FF-021",
+      "severity": "high",
+      "confidence": "high",
+      "route": null,
+      "file": "App.tsx",
+      "lines": {
+        "start": 8,
+        "end": 16
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "useState<string[] | null>(null); fetch(...).then(r => r.json()).then(setData); data === null ? null : data.map(...). There is no catch, explicit pending/empty/error output, retry, or status announcement."
+        }
+      ],
+      "why_it_matters": "Visitors cannot distinguish waiting, no projects and a failed request; assistive technology receives no state feedback.",
+      "proposed_change": "In a later authorized repair, model the real pending, success, empty and failure states, show proportional progress, announce feedback, and offer a safe retry.",
+      "regression_risk": "Keep /api/projects and real successful data behavior intact. Avoid fake success and decorative loading for synchronous content.",
+      "status": "open",
+      "verification_checks": []
+    },
+    {
+      "id": "projects-response-validation",
+      "rule_id": "FF-030",
+      "severity": "high",
+      "confidence": "high",
+      "route": null,
+      "file": "App.tsx",
+      "lines": {
+        "start": 9,
+        "end": 16
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "fetch parses every response as JSON and forwards it to setData without checking r.ok or validating an array of strings; rendering calls data.map and inserts each item as a child."
+        }
+      ],
+      "why_it_matters": "An HTTP error body or malformed response can become a render exception instead of an honest recoverable error.",
+      "proposed_change": "Check HTTP status and validate the expected response before setting usable data; route failures into the frontend error state and preserve remote names as React text.",
+      "regression_risk": "Confirm the existing API response contract before adding validation; backend endpoints, payload semantics and authorization are outside this audit.",
+      "status": "open",
+      "verification_checks": []
+    },
+    {
+      "id": "join-list-integration",
+      "rule_id": "FF-030",
+      "severity": "medium",
+      "confidence": "high",
+      "route": null,
+      "file": "App.tsx",
+      "lines": {
+        "start": 17,
+        "end": 17
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "<form><label>Email <input name=\"email\" type=\"email\" /></label><button>Join the list</button></form> has no action, method or onSubmit."
+        }
+      ],
+      "why_it_matters": "The claimed join action has no supplied subscription path or confirmation; default HTML GET submission can expose the email in the page URL. Actual submission is untested.",
+      "proposed_change": "Have the owner identify the real subscription contract before a scoped frontend integration; submit through that approved contract, validate input, and show honest pending/success/error feedback.",
+      "regression_risk": "Do not invent a subscription service or fake persistence. Preserve the valid implicit email label and native validation, and avoid putting personal data in query strings.",
+      "status": "open",
+      "verification_checks": []
+    },
+    {
+      "id": "demo-placeholder",
+      "rule_id": "FF-018",
+      "severity": "high",
+      "confidence": "high",
+      "route": null,
+      "file": "App.tsx",
+      "lines": {
+        "start": 13,
+        "end": 13
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "<a href=\"#\">Live demo</a> provides a placeholder fragment rather than a demo."
+        },
+        {
+          "kind": "owner",
+          "summary": "BRIEF.md: no live demonstration URL has been supplied."
+        }
+      ],
+      "why_it_matters": "The label promises a demonstration that this source cannot open.",
+      "proposed_change": "Obtain a working authentic demo URL or owner-approved accurate preview wording before changing this claim.",
+      "regression_risk": "Do not fabricate product UI or footage, invent a destination, or delete a genuine claim without agreement.",
+      "status": "needs_review",
+      "verification_checks": []
+    },
+    {
+      "id": "testimonial-provenance",
+      "rule_id": "FF-012",
+      "severity": "high",
+      "confidence": "high",
+      "route": null,
+      "file": "App.tsx",
+      "lines": {
+        "start": 14,
+        "end": 14
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "<blockquote>\"It doubled our revenue.\" <cite>Customer name pending</cite></blockquote>."
+        },
+        {
+          "kind": "owner",
+          "summary": "BRIEF.md explicitly says the testimonial provenance is unknown."
+        }
+      ],
+      "why_it_matters": "A quantified endorsement with unknown provenance can mislead readers; this audit cannot determine whether the statement is true.",
+      "proposed_change": "Request the original quote, attribution permission and basis for the revenue claim from the owner. Decide whether to keep, accurately label or remove it only with the owner.",
+      "regression_risk": "Unknown does not mean fake. Preserve the source during this audit and never invent a substitute quote, reviewer or metric.",
+      "status": "needs_review",
+      "verification_checks": []
+    },
+    {
+      "id": "email-privacy-disclosure",
+      "rule_id": "FF-027",
+      "severity": "high",
+      "confidence": "high",
+      "route": null,
+      "file": "App.tsx",
+      "lines": {
+        "start": 17,
+        "end": 17
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "The email form collects a personal-data field; the complete App.tsx has no privacy link and the fixture contains no policy file."
+        },
+        {
+          "kind": "owner",
+          "summary": "BRIEF.md: no privacy-policy facts have been supplied; this is a synthetic fixture, not a live business."
+        }
+      ],
+      "why_it_matters": "Before real collection, users need access to an accurate description of the data flow. Link absence is observed; policy facts and actual processing are unknown.",
+      "proposed_change": "Owner must supply accurate privacy facts and an approved accessible policy destination before enabling a real collection flow; link it from the form.",
+      "regression_risk": "Do not generate legal promises about purpose, recipients, retention or security, and do not imply compliance from link presence alone.",
+      "status": "needs_review",
+      "verification_checks": []
+    },
+    {
+      "id": "lucide-decoration",
+      "rule_id": "FF-002",
+      "severity": "low",
+      "confidence": "high",
+      "route": null,
+      "file": "App.tsx",
+      "lines": {
+        "start": 2,
+        "end": 11
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "import { Sparkles } from 'lucide-react'; the only use is the aria-hidden icon next to Project desk in the h1."
+        }
+      ],
+      "why_it_matters": "The decorative dependency shortcut conflicts with the owner policy without communicating an action.",
+      "proposed_change": "In a later scoped repair, remove the decorative instance and unused import; use the clear Project desk title.",
+      "regression_risk": "The full fixture has one caller. Preserve the title and check any real dependency manifest before changing dependencies.",
+      "status": "open",
+      "verification_checks": []
+    },
+    {
+      "id": "decorative-sparkle",
+      "rule_id": "FF-024",
+      "severity": "low",
+      "confidence": "high",
+      "route": null,
+      "file": "App.tsx",
+      "lines": {
+        "start": 11,
+        "end": 11
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "<Sparkles aria-hidden=\"true\" /> is decoration in the heading, not a necessary product action. FF-026 is its alias and is not reported separately."
+        }
+      ],
+      "why_it_matters": "The magic cue adds a generic visual signal without helping the project task.",
+      "proposed_change": "Remove this decoration in a later authorized repair.",
+      "regression_risk": "Keep Project desk and its h1 semantics; the current aria-hidden treatment is appropriate for decoration, not an accessibility defect.",
+      "status": "open",
+      "verification_checks": []
+    },
+    {
+      "id": "stock-negation-copy",
+      "rule_id": "FF-015",
+      "severity": "low",
+      "confidence": "high",
+      "route": null,
+      "file": "App.tsx",
+      "lines": {
+        "start": 12,
+        "end": 12
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "It's not another tool, it's your superpower."
+        }
+      ],
+      "why_it_matters": "The stock rhetorical line gives no concrete information about what the project desk does.",
+      "proposed_change": "Replace it, after factual confirmation, with a direct sentence describing the actual supported project task.",
+      "regression_risk": "Do not invent capabilities, performance, outcomes or new business claims.",
+      "status": "open",
+      "verification_checks": []
+    },
+    {
+      "id": "pure-white-canvas",
+      "rule_id": "FF-003",
+      "severity": "low",
+      "confidence": "high",
+      "route": null,
+      "file": "styles.css",
+      "lines": {
+        "start": 2,
+        "end": 2
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "body { background: #ffffff; ... } declares a pure-white page background. The computed canvas was not observed."
+        }
+      ],
+      "why_it_matters": "This declaration conflicts with the strict default surface policy; perceived quality and contrast remain unmeasured.",
+      "proposed_change": "Propose a restrained off-white or tinted surface while preserving the approved violet and checking text/control contrast.",
+      "regression_risk": "A new surface can reduce contrast. Browser evidence is required before claiming visual improvement.",
+      "status": "open",
+      "verification_checks": []
+    },
+    {
+      "id": "default-font-stack",
+      "rule_id": "FF-010",
+      "severity": "low",
+      "confidence": "high",
+      "route": null,
+      "file": "styles.css",
+      "lines": {
+        "start": 2,
+        "end": 2
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "font-family: Inter, sans-serif lists Inter first. There is no font asset or import in the supplied files, so the effective rendered font is unknown."
+        }
+      ],
+      "why_it_matters": "The declared default conflicts with the owner typography policy.",
+      "proposed_change": "Consider an approved suitable system stack or supplied licensed font without adding a dependency only for styling.",
+      "regression_risk": "Changing type affects wrapping and layout. Verify the actual font and all three widths in a runnable app.",
+      "status": "open",
+      "verification_checks": []
+    },
+    {
+      "id": "floating-article-shadows",
+      "rule_id": "FF-006",
+      "severity": "low",
+      "confidence": "high",
+      "route": null,
+      "file": "styles.css",
+      "lines": {
+        "start": 5,
+        "end": 5
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "article { ... box-shadow: 0 24px 64px #0003; } applies a large soft shadow to every plan article."
+        }
+      ],
+      "why_it_matters": "The repeated floating-card treatment matches the policy concern. This is a design judgment grounded in CSS, not a screenshot finding.",
+      "proposed_change": "Use restrained surface tone, spacing or borders to separate the genuine plans in a later scoped repair.",
+      "regression_risk": "Preserve all three plan names, prices and semantic articles; contrast and grouping need a rendered check.",
+      "status": "open",
+      "verification_checks": []
+    },
+    {
+      "id": "oversized-plan-rounding",
+      "rule_id": "FF-019",
+      "severity": "low",
+      "confidence": "medium",
+      "route": null,
+      "file": "styles.css",
+      "lines": {
+        "start": 5,
+        "end": 5
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "article { border-radius: 32px; ... } applies the same large radius to all three plan articles."
+        }
+      ],
+      "why_it_matters": "The repeated 32px treatment is a source-level exaggerated-radius candidate under the strict policy; its visible proportion is unmeasured.",
+      "proposed_change": "Propose a smaller controlled shape scale for plan surfaces, subject to a rendered review.",
+      "regression_risk": "Do not infer clipping or touch-target failures from radius alone, and preserve the genuine pricing layout.",
+      "status": "open",
+      "verification_checks": []
+    }
+  ],
+  "project": "evals/fixtures/source-review",
+  "artifact_root": "evals/results/audit-scope",
+  "scope": "Audit only. Source-only synthetic React/TSX component and CSS. No dependency install, network, browser target, project edit, external action or backend work.",
+  "runtime_status": "runtime_unavailable",
+  "route_note": "No route configuration exists. Finding routes are null. Browser checks list the nominal intended / entry route solely to identify the skipped width checks.",
+  "owner_exceptions": [
+    {
+      "decision": "Keep violet #7c3aed.",
+      "by": "owner",
+      "evidence": "BRIEF.md explicitly approves this brand color; styles.css:1 defines --brand and line 3 applies it to h1.",
+      "scope": "Brand color only. No waiver for gradients, glows or unrelated effects is inferred."
+    },
+    {
+      "decision": "Keep Starter $9/month, Studio $29/month and Team $79/month.",
+      "by": "owner",
+      "evidence": "BRIEF.md identifies exactly three genuine configured plans; App.tsx:5,15 displays them.",
+      "scope": "Three true pricing plans are not FF-007 feature cards or FF-017 arbitrary tiers."
+    }
+  ],
+  "policy_coverage": [
+    {
+      "rule_id": "FF-001",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No CSS gradient is declared."
+    },
+    {
+      "rule_id": "FF-002",
+      "assessment": "findings",
+      "finding_ids": [
+        "lucide-decoration"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-003",
+      "assessment": "findings",
+      "finding_ids": [
+        "pure-white-canvas"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-004",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "The supplied palette is approved violet, white and a translucent black shadow, not unrelated rainbow accents."
+    },
+    {
+      "rule_id": "FF-005",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No purple glow or dark gradient is present. Approved violet is preserved."
+    },
+    {
+      "rule_id": "FF-006",
+      "assessment": "findings",
+      "finding_ids": [
+        "floating-article-shadows"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-007",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "The repeated three-column section contains genuine pricing plans, not feature cards; no violation on count alone."
+    },
+    {
+      "rule_id": "FF-008",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No backdrop-filter or translucent glass panel is present."
+    },
+    {
+      "rule_id": "FF-009",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No em dash occurs in visible source copy."
+    },
+    {
+      "rule_id": "FF-010",
+      "assessment": "findings",
+      "finding_ids": [
+        "default-font-stack"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-011",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No accent left-border marketing callout is declared."
+    },
+    {
+      "rule_id": "FF-012",
+      "assessment": "findings",
+      "finding_ids": [
+        "testimonial-provenance"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-013",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No mixed-span bento structure exists."
+    },
+    {
+      "rule_id": "FF-014",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No terminal or faux code window exists."
+    },
+    {
+      "rule_id": "FF-015",
+      "assessment": "findings",
+      "finding_ids": [
+        "stock-negation-copy"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-016",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No green-check bullet list exists."
+    },
+    {
+      "rule_id": "FF-017",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "BRIEF.md confirms three genuine owner-configured plans. Starter $9/month, Studio $29/month and Team $79/month are preserved."
+    },
+    {
+      "rule_id": "FF-018",
+      "assessment": "findings",
+      "finding_ids": [
+        "demo-placeholder"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-019",
+      "assessment": "findings",
+      "finding_ids": [
+        "oversized-plan-rounding"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-020",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No black canvas or purple-on-black theme exists; violet #7c3aed is explicitly approved."
+    },
+    {
+      "rule_id": "FF-021",
+      "assessment": "findings",
+      "finding_ids": [
+        "projects-async-states"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-022",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No blurred orb or radial decoration exists."
+    },
+    {
+      "rule_id": "FF-023",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No dot-grid background exists."
+    },
+    {
+      "rule_id": "FF-024",
+      "assessment": "findings",
+      "finding_ids": [
+        "decorative-sparkle"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-025",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No animated arrow or perpetual animation exists."
+    },
+    {
+      "rule_id": "FF-026",
+      "assessment": "alias",
+      "finding_ids": [],
+      "evidence": "Alias of FF-024. One sparkle concern is counted once."
+    },
+    {
+      "rule_id": "FF-027",
+      "assessment": "findings",
+      "finding_ids": [
+        "email-privacy-disclosure"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    },
+    {
+      "rule_id": "FF-028",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "No fluorescent accent system or widespread outer glow is declared; do not equate approved violet with neon."
+    },
+    {
+      "rule_id": "FF-029",
+      "assessment": "no_source_finding",
+      "finding_ids": [],
+      "evidence": "The small source does not establish absent palette hierarchy; do not invent complementary colors or reject the approved brand on color count alone."
+    },
+    {
+      "rule_id": "FF-030",
+      "assessment": "findings",
+      "finding_ids": [
+        "projects-response-validation",
+        "join-list-integration"
+      ],
+      "evidence": "See source evidence in the referenced findings. Visual or runtime effects remain untested."
+    }
+  ],
+  "limitations": [
+    "runtime_unavailable: no buildable/runnable application or installed dependencies, server, manifest, browser target, router, tests or real assets was provided.",
+    "No browser captures, computed styles, real contrast, focus, keyboard, overflow, performance, console or network observations at 390, 768 or 1440px.",
+    "No actual /api/projects response, request lifecycle, email submission, persistence, backend authorization or endpoint health was exercised.",
+    "No installed application type/lint/test/build harness was available. Existing source was manually inspected; no syntax-aware framework tooling was supplied in the fixture.",
+    "Testimonial authenticity, demo provenance and privacy facts require owner confirmation. Unknown facts are not labeled false.",
+    "Audit artifacts are outside the project as requested. The optional report checker validates consistency only; it cannot prove source claims or runtime quality."
+  ],
+  "priority_order": [
+    "projects-async-states",
+    "projects-response-validation",
+    "join-list-integration",
+    "demo-placeholder",
+    "testimonial-provenance",
+    "email-privacy-disclosure",
+    "default-font-stack",
+    "pure-white-canvas",
+    "floating-article-shadows",
+    "oversized-plan-rounding",
+    "stock-negation-copy",
+    "lucide-decoration",
+    "decorative-sparkle"
+  ]
+}

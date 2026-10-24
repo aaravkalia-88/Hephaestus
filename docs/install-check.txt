@@ -1,0 +1,4 @@
+Tested with skills CLI 1.7.4 against an isolated local checkout.
+Project-local Codex and Claude Code projections copied all skill files intact.
+Both installed report helpers accepted a valid partial audit and reported ready=false.
+This checks packaging, not live agent behavior or every supported host.

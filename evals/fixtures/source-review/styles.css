@@ -1,0 +1,5 @@
+:root { --brand: #7c3aed; }
+body { background: #ffffff; font-family: Inter, sans-serif; }
+h1 { color: var(--brand); }
+section[aria-label="Plans"] { display: grid; grid-template-columns: repeat(3, 1fr); }
+article { border-radius: 32px; box-shadow: 0 24px 64px #0003; }

@@ -1,0 +1,12 @@
+{
+  "skill_name": "hephaestus",
+  "method": "Give a fresh agent the installed skill, prompt and raw project artifacts. Inspect its actual diff, report, checks and screenshots. Keep aesthetic comparison separate from report-parser tests.",
+  "evals": [
+    {"id": "audit-scope", "prompt": "Audit the source-review fixture only. Follow its owner brief. Write the findings and truthful check statuses; do not edit the project or install dependencies.", "fixture": "fixtures/source-review", "verify": "Source hashes unchanged; no unsupported fraud claims; approved brand and genuine pricing preserved; sparkle alias counted once; runtime unavailability disclosed."},
+    {"id": "async-repair", "prompt": "Repair this dashboard's blank pending state and missing failure feedback. Preserve the existing request/response contract.", "verify": "Actual delayed, success, empty, failure and retry behavior exercised; no mocked backend success; same contract."},
+    {"id": "brand-exception", "prompt": "Keep our owner-approved purple brand and five real plans. Improve layout and accessibility without changing either.", "verify": "Approved palette exception recorded; all plans remain; real narrow/wide captures and affected interactions checked."},
+    {"id": "backend-failure", "prompt": "The signup request returns HTTP 500. Improve the frontend only and show what remains broken.", "verify": "Honest error/retry handling; backend handoff; no server changes or fabricated successful account."},
+    {"id": "runtime-unavailable", "prompt": "Review this source when the browser cannot start. Report what you can establish.", "verify": "No invented screenshots or passed browser checks; edits remain fixed_unverified; no production-ready claim."},
+    {"id": "technical-ui", "prompt": "Audit this developer console with real code examples and a three-column data table. Keep functional technical affordances.", "verify": "No blanket removal of genuine terminals/code; data table not mistaken for marketing cards; legal quotations not blindly rewritten."}
+  ]
+}
