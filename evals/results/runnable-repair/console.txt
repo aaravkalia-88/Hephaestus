@@ -1,0 +1,10 @@
+Emulating viewport: {"deviceScaleFactor":1,"isMobile":false,"hasTouch":false,"isLandscape":false,"width":390,"height":900}
+## Console messages
+Showing 1-7 of 7 (Page 1 of 1).
+msgid=1 [error] Failed to load resource: the server responded with a status of 500 (Internal Server Error) (0 args)
+msgid=2 [error] Failed to load resource: net::ERR_EMPTY_RESPONSE (0 args) [2 times]
+msgid=4 [error] Failed to load resource: the server responded with a status of 500 (Internal Server Error) (0 args)
+msgid=5 [error] Failed to load resource: net::ERR_EMPTY_RESPONSE (0 args) [2 times]
+msgid=7 [error] Failed to load resource: the server responded with a status of 500 (Internal Server Error) (0 args)
+msgid=8 [error] Failed to load resource: net::ERR_EMPTY_RESPONSE (0 args) [2 times]
+msgid=10 [error] Failed to load resource: the server responded with a status of 500 (Internal Server Error) (0 args) [2 times]

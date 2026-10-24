@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-24",
+  "tool": "ECC Chrome DevTools",
+  "browser": "Chrome 155, macOS user agent",
+  "keyboard_width": 1440,
+  "keyboard_observations": [
+    "From the focused native selector, Tab moved to load-button; Enter submitted the current selection.",
+    "With the HTTP failure visible, Tab moved from load-button to retry. Both controls showed a 3px violet focus outline.",
+    "Enter activated Retry and focus returned to the visible load-button; the failed request remained an honest error."
+  ],
+  "computed_contrast": {
+    "heading_on_main": 5.43,
+    "body_on_main": 15.38,
+    "primary_button_text": 5.70,
+    "select_boundary_on_main": 3.99
+  },
+  "computed_styles": {
+    "canvas": "rgb(243, 242, 246)",
+    "main_background": "rgb(250, 249, 252)",
+    "main_shadow": "none",
+    "main_radius": "4px",
+    "font": "system UI stack"
+  },
+  "captures_reviewed": ["before-390.jpg", "before-768.jpg", "before-1440.jpg", "after-390.jpg", "after-768.jpg", "after-1440.jpg", "after-error-390.jpg"],
+  "console_observation": "Only expected simulated HTTP 500 and ERR_EMPTY_RESPONSE resource failures; no uncaught application exception was listed.",
+  "limitations": "No screen reader, complete WCAG audit, physical touch device, live backend or broad design-quality comparison. Keyboard activation was exercised at 1440px; all-width DOM behavior and layout used the shared browser assertions."
+}

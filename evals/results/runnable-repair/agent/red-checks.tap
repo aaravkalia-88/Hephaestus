@@ -1,0 +1,315 @@
+✖ pending request announces loading without disabling the selected screen (1.931167ms)
+✖ success renders returned strings literally and announces a real count (2.270667ms)
+✖ empty success is distinct from loading and failure (0.46925ms)
+✖ HTTP failure never renders even a plausible success body (0.578625ms)
+✖ malformed object is rejected without partial rows (0.419375ms)
+✖ malformed string is rejected without partial rows (0.3995ms)
+✖ malformed mixed array is rejected without partial rows (0.4485ms)
+✖ malformed null is rejected without partial rows (0.356166ms)
+✖ invalid JSON has a recoverable error state (0.413792ms)
+✖ connection failure announces recovery without inventing projects (0.427042ms)
+✖ retry repeats the failed read and recovers, leaving focus on a visible control (0.412084ms)
+✔ submitting another choice preserves the encoded GET contract (0.354958ms)
+✖ an older completion cannot replace the latest result, even if cancellation is ignored (0.347167ms)
+✖ obsolete failure cannot overwrite a newer loading state (0.561125ms)
+✖ a replacement request cancels the obsolete request (0.2265ms)
+✖ a failed refresh clears previous rows rather than presenting stale success (0.606791ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 1
+ℹ fail 15
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 40.304708
+
+✖ failing tests:
+
+test at ../output/repair.test.mjs:67:1
+✖ pending request announces loading without disabling the selected screen (1.931167ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /loading projects/i. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:69:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /loading projects/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:76:1
+✖ success renders returned strings literally and announces a real count (2.270667ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /3 projects loaded/i. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:82:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /3 projects loaded/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:87:1
+✖ empty success is distinct from loading and failure (0.46925ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /no projects/i. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:91:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /no projects/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:96:1
+✖ HTTP failure never renders even a plausible success body (0.578625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'Not a success'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:99:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'Not a success' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:111:3
+✖ malformed object is rejected without partial rows (0.419375ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /invalid|unexpected|malformed/i. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:115:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /invalid|unexpected|malformed/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:111:3
+✖ malformed string is rejected without partial rows (0.3995ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'H',
+  +   'a',
+  +   'r',
+  +   'b',
+  +   'o',
+  +   'r'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:114:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'H', 'a', 'r', 'b', 'o', 'r' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:111:3
+✖ malformed mixed array is rejected without partial rows (0.4485ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'Harbor',
+  +   42
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:114:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'Harbor', 42 ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:111:3
+✖ malformed null is rejected without partial rows (0.356166ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /invalid|unexpected|malformed/i. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:115:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /invalid|unexpected|malformed/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:121:1
+✖ invalid JSON has a recoverable error state (0.413792ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /invalid|unexpected|malformed/i. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:124:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /invalid|unexpected|malformed/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:129:1
+✖ connection failure announces recovery without inventing projects (0.427042ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /connect|connection/i. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:133:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /connect|connection/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:139:1
+✖ retry repeats the failed read and recovers, leaving focus on a visible control (0.412084ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:148:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:165:1
+✖ an older completion cannot replace the latest result, even if cancellation is ignored (0.347167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'Latest',
+  +   'Outdated'
+    ]
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:175:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'Latest', 'Outdated' ],
+    expected: [ 'Latest' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:180:1
+✖ obsolete failure cannot overwrite a newer loading state (0.561125ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /loading projects/i. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:187:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /loading projects/i,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:195:1
+✖ a replacement request cancels the obsolete request (0.2265ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - true
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:198:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../output/repair.test.mjs:202:1
+✖ a failed refresh clears previous rows rather than presenting stale success (0.606791ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'Wrong'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file://evals/results/runnable-repair/agent/repair.test.mjs:208:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'Wrong' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

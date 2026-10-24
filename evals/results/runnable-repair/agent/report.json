@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "mode": "repair",
+  "baseline": "sha256-manifest:986ea01fbb683a5041859904f945a05114040b646e1adf8bfde879ea326c0c33",
+  "baseline_manifest": "../baseline.json",
+  "baseline_files": {
+    "BRIEF.md": "641a2099629321b0b66287ac22db4714447647730086291e4ffffdef286f6c32",
+    "app.mjs": "dfc6ea87927821108f87e33fa7aa9357388a5763279682f5efbf8813fd6dc01f",
+    "index.html": "1d7778e5ef04bfcf8a9a7be1c26b8c54548efb105859d1b6a377bd91729322dc",
+    "styles.css": "1b9fc5f61c3a92d385e9e564f5c6f47c29de1c7a17ef3d36821c7b8a90adf230"
+  },
+  "approved_files": [
+    "index.html",
+    "app.mjs",
+    "styles.css"
+  ],
+  "changed_files": [
+    "index.html",
+    "app.mjs",
+    "styles.css"
+  ],
+  "required_checks": [
+    "baseline-scope",
+    "syntax",
+    "behavior",
+    "source-security",
+    "source-accessibility",
+    "diff-review",
+    "browser-390",
+    "browser-768",
+    "browser-1440"
+  ],
+  "runtime_status": "runtime_unavailable",
+  "repair_status": "partial_verification",
+  "owner_constraints": [
+    {
+      "source": "BRIEF.md",
+      "decision": "Preserve #7c3aed, the project-list purpose, page title, native labeled selector, seven response scenarios and GET /api/projects?scenario=<selection>.",
+      "reason": "Explicit owner instructions override conflicting optional design house defaults, including the Taste violet ban."
+    }
+  ],
+  "checks": [
+    {
+      "id": "baseline-scope",
+      "kind": "tests",
+      "status": "pass",
+      "evidence": "All four original files matched ../baseline.json before edits. node source-checks.mjs passed after edits: only index.html, app.mjs and styles.css changed; BRIEF.md hash unchanged; title and seven option value/label pairs unchanged. Artifacts: baseline-check.json, source-checks.json."
+    },
+    {
+      "id": "syntax",
+      "kind": "build",
+      "status": "pass",
+      "evidence": "node --check app.mjs, run from ../project, exited 0 on Node v24.19.0. This checks JavaScript syntax, not a browser build."
+    },
+    {
+      "id": "behavior",
+      "kind": "tests",
+      "status": "pass",
+      "evidence": "node --test ../output/repair.test.mjs executed the same 16 Node built-in DOM/fetch simulation tests before and after editing: baseline 1 pass / 15 fail, repaired 16 pass / 0 fail. Includes delayed loading, string rendering, empty, HTTP failure, malformed object/string/mixed/null data, invalid JSON, connection failure, retry focus, encoded GET, stale completion/error suppression, cancellation and failed refresh. Artifacts: repair.test.mjs, red-checks.tap, green-checks.tap. Mocked behavior only; no browser or live service."
+    },
+    {
+      "id": "source-security",
+      "kind": "tests",
+      "status": "pass",
+      "evidence": "Source review and node source-checks.mjs confirmed encoded scenario query, a read-only fetch with no endpoint change, whole-array string validation before rendering, textContent for remote names, no HTML injection sinks/eval/console logs/external resources. The local literal-markup test passed. Backend/auth/transport configuration was outside this repair."
+    },
+    {
+      "id": "source-accessibility",
+      "kind": "accessibility",
+      "status": "pass",
+      "evidence": "Static source assertions passed for native label/select, unique IDs, atomic polite status, list aria-busy and visible focus CSS. Declared-color calculations: text 15.38:1, muted text 7.31:1, violet text 5.43:1, primary button 5.70:1, select border 3.99:1. Local retry focus simulation passed. This is source and color math, not an accessibility-tree, screen-reader or computed-style check. Artifacts: source-checks.mjs, source-checks.json."
+    },
+    {
+      "id": "diff-review",
+      "kind": "tests",
+      "status": "pass",
+      "evidence": "Reviewed all three diffs against output/before. Changes map to findings; no routes, content facts, packages, assets or backend files added. Final source assertions regenerated changes.patch and passed. Original source is retained in before/ for review and rollback."
+    },
+    {
+      "id": "build-toolchain",
+      "kind": "build",
+      "status": "skipped",
+      "evidence": "The native-web input contains no package.json, build configuration or build command. No dependencies installed. JavaScript syntax was checked separately."
+    },
+    {
+      "id": "typecheck",
+      "kind": "types",
+      "status": "skipped",
+      "evidence": "No TypeScript files or type-check configuration exist in the four-file native-web input."
+    },
+    {
+      "id": "lint",
+      "kind": "lint",
+      "status": "skipped",
+      "evidence": "No project lint configuration or runner is supplied. Static source assertions were run separately and are not presented as a linter."
+    },
+    {
+      "id": "coverage",
+      "kind": "tests",
+      "status": "skipped",
+      "evidence": "node --test --experimental-test-coverage ../output/repair.test.mjs exited 0 with 16 tests passing, but its coverage table contained no instrumented files. The displayed all-files 100% is therefore not evidence of application coverage; no app coverage percentage is claimed. Artifact: coverage-checks.txt."
+    },
+    {
+      "id": "live-api",
+      "kind": "async",
+      "status": "skipped",
+      "evidence": "This isolated pass prohibited network and backend access. The evaluation runner supplies the loopback response service separately. Real HTTP behavior and all seven service scenarios remain for independent browser verification."
+    },
+    {
+      "id": "browser-390",
+      "kind": "browser",
+      "status": "skipped",
+      "width": 390,
+      "route": "/",
+      "evidence": "runtime_unavailable: browser access was prohibited in this isolated pass. No 390px captures, computed layout, real keyboard/focus, console, network, accessibility tree or live async observations were collected."
+    },
+    {
+      "id": "browser-768",
+      "kind": "browser",
+      "status": "skipped",
+      "width": 768,
+      "route": "/",
+      "evidence": "runtime_unavailable: browser access was prohibited in this isolated pass. No 768px captures, computed layout, real keyboard/focus, console, network, accessibility tree or live async observations were collected."
+    },
+    {
+      "id": "browser-1440",
+      "kind": "browser",
+      "status": "skipped",
+      "width": 1440,
+      "route": "/",
+      "evidence": "runtime_unavailable: browser access was prohibited in this isolated pass. No 1440px captures, computed layout, real keyboard/focus, console, network, accessibility tree or live async observations were collected."
+    },
+    {
+      "id": "report-consistency",
+      "kind": "tests",
+      "status": "pass",
+      "evidence": "node ../skill/scripts/check-report.mjs report.json exited 0 with valid:true, ready:false and no errors. The same command with --require-verified exited 1, as expected for skipped browser checks and fixed_unverified findings. The helper checks consistency only. Artifacts: report-check.json, report-verified-check.json."
+    }
+  ],
+  "findings": [
+    {
+      "id": "request-states",
+      "rule_id": "FF-021",
+      "severity": "high",
+      "confidence": "high",
+      "route": "/",
+      "file": "app.mjs",
+      "lines": {
+        "start": 18,
+        "end": 64
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "Baseline loadProjects cleared the status and list, then awaited fetch/json without loading, success, empty or error feedback. Caller catch handlers silently discarded failures."
+        }
+      ],
+      "why_it_matters": "A delayed, empty or failed read was indistinguishable from a blank list.",
+      "proposed_change": "Use region-local loading text and aria-busy, real loaded counts, an explicit empty state and recoverable local error messages.",
+      "regression_risk": "Real announcement timing and request lifecycle still require browser checks.",
+      "status": "fixed_unverified",
+      "verification_checks": [
+        "behavior",
+        "syntax",
+        "browser-390",
+        "browser-768",
+        "browser-1440"
+      ]
+    },
+    {
+      "id": "response-validation",
+      "rule_id": "FF-030",
+      "severity": "high",
+      "confidence": "high",
+      "route": "/",
+      "file": "app.mjs",
+      "lines": {
+        "start": 26,
+        "end": 48
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "Baseline iterated response.json() without checking response.ok or validating an array of strings; an HTTP failure body could render as success and mixed arrays could render partial data."
+        }
+      ],
+      "why_it_matters": "The screen could misrepresent failed or malformed responses as valid projects.",
+      "proposed_change": "Require an OK HTTP response and an entire string array before rendering; retain textContent so markup remains literal data.",
+      "regression_risk": "Validation intentionally accepts all strings, including empty strings, without inventing or rewriting returned names.",
+      "status": "fixed_unverified",
+      "verification_checks": [
+        "behavior",
+        "source-security",
+        "syntax",
+        "browser-390",
+        "browser-768",
+        "browser-1440"
+      ]
+    },
+    {
+      "id": "superseded-requests",
+      "rule_id": "FF-030",
+      "severity": "medium",
+      "confidence": "high",
+      "route": "/",
+      "file": "app.mjs",
+      "lines": {
+        "start": 8,
+        "end": 16
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "Baseline had no cancellation or request identity guard; separate submissions could complete in reverse order and overwrite the latest choice."
+        }
+      ],
+      "why_it_matters": "Users changing a test response during a wait could see outdated results.",
+      "proposed_change": "Abort the previous GET and ignore success/error/finally mutations from obsolete request versions.",
+      "regression_risk": "Cancellation is best effort; the identity guard is tested even when mocked cancellation is ignored. Real transport behavior remains untested.",
+      "status": "fixed_unverified",
+      "verification_checks": [
+        "behavior",
+        "syntax",
+        "browser-390",
+        "browser-768",
+        "browser-1440"
+      ]
+    },
+    {
+      "id": "status-and-retry-access",
+      "rule_id": "FF-030",
+      "severity": "medium",
+      "confidence": "high",
+      "route": "/",
+      "file": "index.html",
+      "lines": {
+        "start": 21,
+        "end": 27
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "Baseline supplied a permanently hidden Retry button with no listener in app.mjs, and status/list markup did not express atomic updates or the list busy state."
+        }
+      ],
+      "why_it_matters": "Failed reads had no recovery action; hiding a focused Retry control during recovery also needs a visible focus destination.",
+      "proposed_change": "Wire Retry to the failed scenario, return its focus to Load projects before hiding it, and add atomic status and list busy semantics.",
+      "regression_risk": "Focus is covered only by a DOM simulation. Screen-reader and keyboard behavior remain unverified.",
+      "status": "fixed_unverified",
+      "verification_checks": [
+        "behavior",
+        "source-accessibility",
+        "diff-review",
+        "browser-390",
+        "browser-768",
+        "browser-1440"
+      ]
+    },
+    {
+      "id": "narrow-screen-layout",
+      "rule_id": "FF-030",
+      "severity": "high",
+      "confidence": "high",
+      "route": "/",
+      "file": "styles.css",
+      "lines": {
+        "start": 13,
+        "end": 62
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "Baseline main used width:960px plus 72px horizontal padding with default content-box sizing, and its form was a single nonwrapping flex row."
+        }
+      ],
+      "why_it_matters": "The declared main box exceeded both 390px and 768px viewports before margins; long returned names had no explicit wrap strategy.",
+      "proposed_change": "Use border-box sizing, a fluid capped main width, one-column controls below 600px, long-name wrapping, 44px minimum controls and explicit focus-visible styles.",
+      "regression_risk": "Source arithmetic supports the change, but actual overflow, native select fit, zoom and visual hierarchy need all three browser widths.",
+      "status": "fixed_unverified",
+      "verification_checks": [
+        "source-accessibility",
+        "diff-review",
+        "browser-390",
+        "browser-768",
+        "browser-1440"
+      ]
+    },
+    {
+      "id": "white-canvas",
+      "rule_id": "FF-003",
+      "severity": "low",
+      "confidence": "high",
+      "route": "/",
+      "file": "styles.css",
+      "lines": {
+        "start": 1,
+        "end": 11
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "Baseline :root declared background:#ffffff."
+        }
+      ],
+      "why_it_matters": "This conflicts with the owner-supplied strict default for full-page canvas color.",
+      "proposed_change": "Use a considered tinted neutral canvas and a slightly lighter neutral main surface, preserving readable contrast.",
+      "regression_risk": "Final color rendering and perceived surface separation have not been visually reviewed.",
+      "status": "fixed_unverified",
+      "verification_checks": [
+        "source-accessibility",
+        "diff-review",
+        "browser-390",
+        "browser-768",
+        "browser-1440"
+      ]
+    },
+    {
+      "id": "large-shadow",
+      "rule_id": "FF-006",
+      "severity": "low",
+      "confidence": "high",
+      "route": "/",
+      "file": "styles.css",
+      "lines": {
+        "start": 14,
+        "end": 22
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "Baseline main declared box-shadow:0 24px 64px #0003."
+        }
+      ],
+      "why_it_matters": "The large floating shadow is a template-style treatment under the supplied policy.",
+      "proposed_change": "Remove the shadow and use restrained surface separation and a border.",
+      "regression_risk": "Visual separation is source-reviewed only.",
+      "status": "fixed_unverified",
+      "verification_checks": [
+        "diff-review",
+        "browser-390",
+        "browser-768",
+        "browser-1440"
+      ]
+    },
+    {
+      "id": "default-font",
+      "rule_id": "FF-010",
+      "severity": "low",
+      "confidence": "high",
+      "route": "/",
+      "file": "styles.css",
+      "lines": {
+        "start": 9,
+        "end": 10
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "Baseline selected Inter,sans-serif without providing a font resource."
+        }
+      ],
+      "why_it_matters": "The stack used the policy-banned automatic default and relied on an unspecified fallback.",
+      "proposed_change": "Use a considered local system font stack with no external font or dependency.",
+      "regression_risk": "Platform-specific font metrics and text fit need browser inspection.",
+      "status": "fixed_unverified",
+      "verification_checks": [
+        "diff-review",
+        "browser-390",
+        "browser-768",
+        "browser-1440"
+      ]
+    },
+    {
+      "id": "oversized-main-radius",
+      "rule_id": "FF-019",
+      "severity": "low",
+      "confidence": "high",
+      "route": "/",
+      "file": "styles.css",
+      "lines": {
+        "start": 14,
+        "end": 22
+      },
+      "evidence": [
+        {
+          "kind": "source",
+          "summary": "Baseline main used border-radius:32px on the single application container."
+        }
+      ],
+      "why_it_matters": "The oversized soft container conflicts with the supplied practical shape default.",
+      "proposed_change": "Use a controlled 4px radius for the main container and native controls.",
+      "regression_risk": "Shape and overall visual result are not browser-verified.",
+      "status": "fixed_unverified",
+      "verification_checks": [
+        "diff-review",
+        "browser-390",
+        "browser-768",
+        "browser-1440"
+      ]
+    }
+  ],
+  "limitations": [
+    "No browser, network, backend, dependency installation or Git operations were performed.",
+    "DOM/fetch tests do not prove rendering, computed styles, live response behavior, keyboard operation or screen-reader announcements.",
+    "Application coverage was not measurable from the attempted Node VM coverage output.",
+    "All findings remain fixed_unverified until matching browser evidence at 390, 768 and 1440 passes."
+  ]
+}

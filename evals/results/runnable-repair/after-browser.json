@@ -1,0 +1,419 @@
+[
+  {
+    "route": "/after/",
+    "width": 390,
+    "checks": [
+      {
+        "id": "pending",
+        "status": "pass",
+        "evidence": {
+          "message": "Loading projects...",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "pending-controls",
+        "status": "pass",
+        "evidence": "Response selector must remain usable while a request is pending."
+      },
+      {
+        "id": "success",
+        "status": "pass",
+        "evidence": {
+          "message": "3 projects loaded.",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "live-feedback",
+        "status": "pass",
+        "evidence": "Request feedback has live-region semantics."
+      },
+      {
+        "id": "empty",
+        "status": "pass",
+        "evidence": {
+          "message": "No projects were returned. Choose another test response or load again.",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "error",
+        "status": "pass",
+        "evidence": {
+          "message": "The project service could not load projects. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "malformed",
+        "status": "pass",
+        "evidence": {
+          "message": "The project service returned an invalid project list. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "network",
+        "status": "pass",
+        "evidence": {
+          "message": "Could not connect to the project service. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "retry-pending",
+        "status": "pass",
+        "evidence": {
+          "message": "Loading projects...",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "retry-failure",
+        "status": "pass",
+        "evidence": {
+          "message": "Could not connect to the project service. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "recovery",
+        "status": "pass",
+        "evidence": {
+          "message": "3 projects loaded.",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "remote-text",
+        "status": "pass",
+        "evidence": {
+          "message": "1 project loaded.",
+          "names": [
+            "<b>Release review</b>"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "latest-request",
+        "status": "pass",
+        "evidence": {
+          "message": "No projects were returned. Choose another test response or load again.",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "no-overflow",
+        "status": "pass",
+        "evidence": {
+          "viewport": 390,
+          "scrollWidth": 390
+        }
+      },
+      {
+        "id": "preserved-identity",
+        "status": "pass",
+        "evidence": "Original title, heading and approved brand retained."
+      }
+    ],
+    "passed": true
+  },
+  {
+    "route": "/after/",
+    "width": 768,
+    "checks": [
+      {
+        "id": "pending",
+        "status": "pass",
+        "evidence": {
+          "message": "Loading projects...",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "pending-controls",
+        "status": "pass",
+        "evidence": "Response selector must remain usable while a request is pending."
+      },
+      {
+        "id": "success",
+        "status": "pass",
+        "evidence": {
+          "message": "3 projects loaded.",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "live-feedback",
+        "status": "pass",
+        "evidence": "Request feedback has live-region semantics."
+      },
+      {
+        "id": "empty",
+        "status": "pass",
+        "evidence": {
+          "message": "No projects were returned. Choose another test response or load again.",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "error",
+        "status": "pass",
+        "evidence": {
+          "message": "The project service could not load projects. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "malformed",
+        "status": "pass",
+        "evidence": {
+          "message": "The project service returned an invalid project list. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "network",
+        "status": "pass",
+        "evidence": {
+          "message": "Could not connect to the project service. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "retry-pending",
+        "status": "pass",
+        "evidence": {
+          "message": "Loading projects...",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "retry-failure",
+        "status": "pass",
+        "evidence": {
+          "message": "Could not connect to the project service. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "recovery",
+        "status": "pass",
+        "evidence": {
+          "message": "3 projects loaded.",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "remote-text",
+        "status": "pass",
+        "evidence": {
+          "message": "1 project loaded.",
+          "names": [
+            "<b>Release review</b>"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "latest-request",
+        "status": "pass",
+        "evidence": {
+          "message": "No projects were returned. Choose another test response or load again.",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "no-overflow",
+        "status": "pass",
+        "evidence": {
+          "viewport": 768,
+          "scrollWidth": 768
+        }
+      },
+      {
+        "id": "preserved-identity",
+        "status": "pass",
+        "evidence": "Original title, heading and approved brand retained."
+      }
+    ],
+    "passed": true
+  },
+  {
+    "route": "/after/",
+    "width": 1440,
+    "checks": [
+      {
+        "id": "pending",
+        "status": "pass",
+        "evidence": {
+          "message": "Loading projects...",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "pending-controls",
+        "status": "pass",
+        "evidence": "Response selector must remain usable while a request is pending."
+      },
+      {
+        "id": "success",
+        "status": "pass",
+        "evidence": {
+          "message": "3 projects loaded.",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "live-feedback",
+        "status": "pass",
+        "evidence": "Request feedback has live-region semantics."
+      },
+      {
+        "id": "empty",
+        "status": "pass",
+        "evidence": {
+          "message": "No projects were returned. Choose another test response or load again.",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "error",
+        "status": "pass",
+        "evidence": {
+          "message": "The project service could not load projects. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "malformed",
+        "status": "pass",
+        "evidence": {
+          "message": "The project service returned an invalid project list. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "network",
+        "status": "pass",
+        "evidence": {
+          "message": "Could not connect to the project service. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "retry-pending",
+        "status": "pass",
+        "evidence": {
+          "message": "Loading projects...",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "retry-failure",
+        "status": "pass",
+        "evidence": {
+          "message": "Could not connect to the project service. Retry the request.",
+          "names": [],
+          "retry": true
+        }
+      },
+      {
+        "id": "recovery",
+        "status": "pass",
+        "evidence": {
+          "message": "3 projects loaded.",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "remote-text",
+        "status": "pass",
+        "evidence": {
+          "message": "1 project loaded.",
+          "names": [
+            "<b>Release review</b>"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "latest-request",
+        "status": "pass",
+        "evidence": {
+          "message": "No projects were returned. Choose another test response or load again.",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "no-overflow",
+        "status": "pass",
+        "evidence": {
+          "viewport": 1440,
+          "scrollWidth": 1440
+        }
+      },
+      {
+        "id": "preserved-identity",
+        "status": "pass",
+        "evidence": "Original title, heading and approved brand retained."
+      }
+    ],
+    "passed": true
+  }
+]

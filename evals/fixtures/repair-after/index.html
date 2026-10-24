@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Project desk | Hephaestus fixture</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <main>
+    <header><p>Synthetic repair fixture</p><h1>Project desk</h1><p>Review the projects returned by the selected test response.</p></header>
+    <form id="controls">
+      <label for="scenario">Test response</label>
+      <select id="scenario" name="scenario">
+        <option value="success">Success</option><option value="slow">Delayed success</option>
+        <option value="empty">Empty list</option><option value="error">HTTP failure</option>
+        <option value="malformed">Malformed data</option><option value="markup">Literal markup text</option>
+        <option value="network">Connection failure</option>
+      </select>
+      <button id="load-button" type="submit">Load projects</button>
+    </form>
+    <section aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+      <p id="status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <ul id="projects" aria-busy="false"></ul>
+      <button id="retry" type="button" hidden>Retry request</button>
+    </section>
+    <footer>Local sample data only. Nothing is saved or sent to an external service.</footer>
+  </main>
+</body>
+</html>

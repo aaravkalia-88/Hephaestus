@@ -1,0 +1,24 @@
+✔ pending request announces loading without disabling the selected screen (1.380208ms)
+✔ success renders returned strings literally and announces a real count (2.072583ms)
+✔ empty success is distinct from loading and failure (0.443041ms)
+✔ HTTP failure never renders even a plausible success body (0.420958ms)
+✔ malformed object is rejected without partial rows (0.382416ms)
+✔ malformed string is rejected without partial rows (0.349208ms)
+✔ malformed mixed array is rejected without partial rows (0.302542ms)
+✔ malformed null is rejected without partial rows (0.302333ms)
+✔ invalid JSON has a recoverable error state (0.355792ms)
+✔ connection failure announces recovery without inventing projects (0.362ms)
+✔ retry repeats the failed read and recovers, leaving focus on a visible control (0.389084ms)
+✔ submitting another choice preserves the encoded GET contract (0.344375ms)
+✔ an older completion cannot replace the latest result, even if cancellation is ignored (0.343709ms)
+✔ obsolete failure cannot overwrite a newer loading state (0.338458ms)
+✔ a replacement request cancels the obsolete request (0.214958ms)
+✔ a failed refresh clears previous rows rather than presenting stale success (0.363958ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38.122042
