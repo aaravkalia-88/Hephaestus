@@ -18,7 +18,9 @@ export function createFixtureServer() {
     response.setHeader('X-Content-Type-Options', 'nosniff');
     response.setHeader('Content-Security-Policy', "default-src 'self'; base-uri 'none'; frame-ancestors 'none'");
     if (request.method !== 'GET') { response.writeHead(405, { Allow: 'GET' }).end(); return; }
-    const url = new URL(request.url, 'http://127.0.0.1');
+    let url;
+    try { url = new URL(request.url, 'http://127.0.0.1'); }
+    catch { response.writeHead(400).end('Invalid request target'); return; }
     if (url.pathname === '/favicon.ico') { response.writeHead(204).end(); return; }
     if (url.pathname === '/api/projects') {
       const scenario = url.searchParams.get('scenario') || 'success';
