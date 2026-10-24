@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
+import { get } from 'node:http';
 
 async function withServer(run) {
   const { createFixtureServer } = await import('../evals/serve.mjs');
@@ -41,4 +42,13 @@ test('a slow response is genuinely delayed so overlapping requests can be exerci
   assert.ok(performance.now() - started < 2000);
   assert.equal((await slow).status, 200);
   assert.ok(performance.now() - started >= 2000);
+}));
+
+test('malformed request targets return 400 instead of crashing the local server', () => withServer(async base => {
+  const status = await new Promise((resolve, reject) => {
+    const request = get(`${base}/`, { path: '//[' }, response => { response.resume(); resolve(response.statusCode); }).on('error', reject);
+    request.setTimeout(1000, () => request.destroy(new Error('Fixture server did not answer.')));
+  });
+  assert.equal(status, 400);
+  assert.equal((await fetch(`${base}/before/`)).status, 200);
 }));

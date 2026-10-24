@@ -1,0 +1,431 @@
+[
+  {
+    "route": "/before/",
+    "width": 390,
+    "checks": [
+      {
+        "id": "pending",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "pending-controls",
+        "status": "pass",
+        "evidence": "Response selector must remain usable while a request is pending."
+      },
+      {
+        "id": "success",
+        "status": "pass",
+        "evidence": {
+          "message": "",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "live-feedback",
+        "status": "pass",
+        "evidence": "Request feedback has live-region semantics."
+      },
+      {
+        "id": "empty",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "error",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "malformed",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "network",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "retry-pending",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "retry-failure",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "recovery",
+        "status": "pass",
+        "evidence": {
+          "message": "",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "remote-text",
+        "status": "pass",
+        "evidence": {
+          "message": "",
+          "names": [
+            "<b>Release review</b>"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "latest-request",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "no-overflow",
+        "status": "fail",
+        "evidence": {
+          "viewport": 390,
+          "scrollWidth": 1032
+        }
+      },
+      {
+        "id": "preserved-identity",
+        "status": "pass",
+        "evidence": "Original title, heading and approved brand retained."
+      }
+    ],
+    "passed": false
+  },
+  {
+    "route": "/before/",
+    "width": 768,
+    "checks": [
+      {
+        "id": "pending",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "pending-controls",
+        "status": "pass",
+        "evidence": "Response selector must remain usable while a request is pending."
+      },
+      {
+        "id": "success",
+        "status": "pass",
+        "evidence": {
+          "message": "",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "live-feedback",
+        "status": "pass",
+        "evidence": "Request feedback has live-region semantics."
+      },
+      {
+        "id": "empty",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "error",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "malformed",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "network",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "retry-pending",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "retry-failure",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "recovery",
+        "status": "pass",
+        "evidence": {
+          "message": "",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "remote-text",
+        "status": "pass",
+        "evidence": {
+          "message": "",
+          "names": [
+            "<b>Release review</b>"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "latest-request",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "no-overflow",
+        "status": "fail",
+        "evidence": {
+          "viewport": 768,
+          "scrollWidth": 1032
+        }
+      },
+      {
+        "id": "preserved-identity",
+        "status": "pass",
+        "evidence": "Original title, heading and approved brand retained."
+      }
+    ],
+    "passed": false
+  },
+  {
+    "route": "/before/",
+    "width": 1440,
+    "checks": [
+      {
+        "id": "pending",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "pending-controls",
+        "status": "pass",
+        "evidence": "Response selector must remain usable while a request is pending."
+      },
+      {
+        "id": "success",
+        "status": "pass",
+        "evidence": {
+          "message": "",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "live-feedback",
+        "status": "pass",
+        "evidence": "Request feedback has live-region semantics."
+      },
+      {
+        "id": "empty",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "error",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "malformed",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "network",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "retry-pending",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "retry-failure",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [],
+          "retry": false
+        }
+      },
+      {
+        "id": "recovery",
+        "status": "pass",
+        "evidence": {
+          "message": "",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "remote-text",
+        "status": "pass",
+        "evidence": {
+          "message": "",
+          "names": [
+            "<b>Release review</b>"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "latest-request",
+        "status": "fail",
+        "evidence": {
+          "message": "",
+          "names": [
+            "Export report",
+            "Invite reviewer",
+            "Fix mobile menu"
+          ],
+          "retry": false
+        }
+      },
+      {
+        "id": "no-overflow",
+        "status": "pass",
+        "evidence": {
+          "viewport": 1440,
+          "scrollWidth": 1440
+        }
+      },
+      {
+        "id": "preserved-identity",
+        "status": "pass",
+        "evidence": "Original title, heading and approved brand retained."
+      }
+    ],
+    "passed": false
+  }
+]
