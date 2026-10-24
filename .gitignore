@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+.hephaestus/
+coverage/
+.env
+.env.*
+!.env.example
+/devpost/learner-profile.md
