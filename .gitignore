@@ -6,3 +6,5 @@ coverage/
 .env.*
 !.env.example
 /devpost/learner-profile.md
+.project-notes/
+.super-clean-backup/

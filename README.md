@@ -2,7 +2,25 @@
 
 An installable skill for auditing and repairing existing frontends inside a coding agent. It combines the owner's 30-rule anti-slop policy with source evidence, scoped edits, real browser review, and honest verification statuses.
 
+Developed as a proof of concept for **Build With AI: Basics by Devpost**, using the [Devpost Learn Skill Pack](https://github.com/challengepost/learn-ai-basics) to structure planning, a runnable repair experiment, review and learning documentation.
+
 This release is **frontend-only**. It preserves behavior, approved branding and business facts. Backend failures are reported for follow-up; backend repair is deferred.
+
+## Build With AI: Basics
+
+The skill package existed before the complete learning workflow was documented. The follow-up pass uses the curriculum to make the intended journey, acceptance criteria, technical choices and observed proof explicit. It does not retroactively claim that every course step happened before coding.
+
+| Learning artifact | Purpose and current state |
+| --- | --- |
+| [Scope](devpost/scope.md) | Core loop, proof and frontend-only boundary; draft for learner review |
+| [PRD](devpost/prd.md) | Observable behavior and acceptance criteria; draft for learner review |
+| [Technical spec](devpost/spec.md) | Stack, execution and failure modes; draft for learner review |
+| [Build checklist](devpost/checklist.md) | Actual technical progress, with learner checkpoints tracked separately |
+| [App map](devpost/app-map.html) | Offline reference to the real skill, fixture and checker code |
+
+The learner profile is private and ignored by Git. The six curriculum skills guide development; they are not bundled as a dependency of Hephaestus. You can install them separately with `npx skills add challengepost/learn-ai-basics --all`.
+
+Learner document review, hands-on feedback, the learning wrap-up, demo recording and Devpost submission remain pending. Agent tests do not complete those steps. This README is technical project documentation; submission and survey answers remain the learner's own writing.
 
 ## Install
 
@@ -70,7 +88,19 @@ The default command accepts a valid partial audit. `--require-verified` rejects 
 
 Actual frontend repairs still require the target's relevant build/tests, interactive and accessibility checks, and real captures at 390, 768 and 1440 pixels. A missing browser is a skipped check. An edited issue without evidence is `fixed_unverified`. Unknown testimonial, demo or privacy facts remain owner review items. No parser result establishes legal compliance, complete accessibility, security or production readiness.
 
-See [TDD evidence](docs/frontend-skill.tdd.md) for observed checks and limits. Evaluation fixtures are synthetic source snippets, not a demo product or fabricated customer evidence.
+See [TDD evidence](docs/frontend-skill.tdd.md) for observed checks and limits. All evaluation fixtures are synthetic test material, not a demo product or customer evidence.
+
+## Try the runnable repair fixture
+
+From a checkout of this repository with Node 22+:
+
+```sh
+npm run demo
+```
+
+Open [before](http://127.0.0.1:4173/before/) and [after](http://127.0.0.1:4173/after/). Choose a test response and select **Load projects**. Compare delayed loading, empty lists, HTTP failures, malformed responses and retry. The server binds to your own computer and serves only named test assets. Stop it with Ctrl+C.
+
+This screen and its response service are synthetic test material. No account, API key, database, external service or package installation is needed. The fixture is native HTML/CSS/JavaScript; it does not establish React/Next.js runtime coverage. See [the observed evaluation](evals/results/runnable-repair/README.md) for the actual patch, browser checks, captures and limitations.
 
 ## Attribution
 

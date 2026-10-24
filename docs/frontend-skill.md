@@ -16,6 +16,26 @@ The skill delegates source understanding and repairs to the host model and tools
 
 The only executable shipped in the skill is a local JSON report consistency checker, built with Node's standard library. It prevents obvious status, alias and file-scope contradictions. It cannot attest that screenshots, check results or approvals are authentic. No model API, accounts, telemetry, database, new frontend framework or custom installer is needed.
 
+## Implemented architecture
+
+```mermaid
+flowchart TD
+    User[User selects project and scope] --> Host[Host coding agent]
+    Skill[Hephaestus skill and 30-rule policy] --> Host
+    Host --> Target[Isolated target frontend]
+    Target --> Browser[Local browser and project checks]
+    Browser --> Evidence[Local evidence, report and diff]
+    Evidence --> Checker[Optional Node report consistency check]
+    Checker --> Review[User reviews observed result]
+    Before[Retained synthetic input] --> Experiment[Independent repair evaluation]
+    Experiment --> After[Retained repaired fixture]
+    Server[Loopback fixture server: named assets and simulated GET responses] --> Before
+    Server --> After
+    After --> Browser
+```
+
+The host agent is the execution boundary: Hephaestus does not supply a separate model or service. Source, browser data and reports remain local unless publication is explicitly authorized. The report helper reads JSON only. The optional evaluation server binds to `127.0.0.1`, serves an explicit asset list and synthetic read-only responses, and has no persistence, credentials or external API. It is test infrastructure; no Backend Fixer or hosted product API is implemented.
+
 ## Taste contribution
 
 The [Taste-derived reference](../skills/hephaestus/references/taste.md) retains the subject-specific design rationale, page/app distinction and real-render critique loop from Leonxlnx/taste-skill at `6010f91a9935f1c167dfc500fb1a475681892e6b`. Its MIT notice is bundled. Hephaestus uses the owner's stricter policy, rather than Taste's full house-style engine or mandatory motion/image quotas. No upstream media, font files, scene library or generator runtime is vendored.
@@ -23,3 +43,5 @@ The [Taste-derived reference](../skills/hephaestus/references/taste.md) retains 
 ## Verification scope
 
 Parser tests establish metadata invariants, not aesthetic outcomes. Behavioral eval prompts cover scope, business facts, async state handling, backend handoff and unavailable browsers. Use real project checks and screenshots for an actual repair. Do not describe this release as a standalone autonomous scanner or as a production-readiness certification.
+
+The [runnable evaluation](../evals/results/runnable-repair/README.md) now records one independently repaired native-web fixture, 45 passing browser assertions and their limits. Broader framework and host support remains unverified.

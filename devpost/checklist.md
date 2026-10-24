@@ -20,6 +20,7 @@ Build mode: not explicitly chosen. Technical work proceeds under the current aut
   Verify (mechanical): Node server tests; a failing browser check against the input; the same check against the repair at 390/768/1440; screenshots and affected native controls.
   Learner check: Run `npm run demo`, compare before and after, change the response mode, and try failure recovery. Report what worked or felt wrong.
   Commit: `test: define runnable repair evaluation (RED)` then `feat: add verified frontend repair fixture (GREEN)`
+  Technical result: Complete. The fresh-agent patch passed 16 controller tests and 45 real browser assertions; the full Node suite passed 29 tests. See `evals/results/runnable-repair/README.md`. Learner check remains pending, so this slice is not marked fully complete.
 
 - [ ] **2. Someone can understand and reproduce the proof**
   Becomes usable: README, actual evidence, clear learning state and offline code map.
@@ -30,6 +31,7 @@ Build mode: not explicitly chosen. Technical work proceeds under the current aut
   Verify (mechanical): Relevant tests, metadata, safe asset serving, local links, evidence hashes, secret-pattern scan and complete diff review.
   Learner check: Follow the README from installation to the fixture and identify any unclear step.
   Commit: `docs: document Devpost learning workflow and repair evidence`
+  Technical result: README, evidence and offline map are prepared. Learner review remains pending. Cleanup, final audit and publication are tracked in Git and local cleanup notes.
 
 ## Hands-on Checkpoints
 
@@ -46,10 +48,10 @@ Build mode: not explicitly chosen. Technical work proceeds under the current aut
 - [ ] Optional edit and transfer reflection addressed
 - [ ] `devpost/app-map.html` generated, checked and shown
 
-Activity and evidence: agent technical checks will be recorded with the evaluation; learner activity is pending.
+Activity and evidence: agent technical checks are recorded in `evals/results/runnable-repair/`; learner activity is pending. A hands-on feedback request was sent, with no response recorded yet.
 Route and stops: reference-only route through the skill, fixture request handler and report checker; not a completed guided tour.
 Edit outcome: no learner edit requested or performed.
 Reflection: not yet offered; no answer invented.
-Activity mode: technical implementation now; learner walkthrough pending.
+Activity mode: technical implementation completed; learner walkthrough pending. The map was generated and rendered in the browser with no scripts or network dependencies; editor opening was queued. Sending a map is not a completed learning activity.
 
 ## Revisions

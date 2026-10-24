@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hephaestus — project map</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #282431; background: #f4f2ed; font: 17px/1.6 system-ui, sans-serif; }
+    main { max-width: 64rem; margin: auto; padding: clamp(20px, 5vw, 64px); }
+    h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.15; }
+    h2 { margin-top: 2em; font-size: 24px; }
+    a { color: #5733ad; text-underline-offset: .2em; }
+    :focus-visible { outline: 3px solid #5733ad; outline-offset: 4px; }
+    code { font-size: .9em; overflow-wrap: anywhere; }
+    .flow { padding-left: 24px; }
+    .flow li { padding: 12px 0; border-bottom: 1px solid #c7c1ce; }
+    details { margin: 16px 0; padding: 12px 0; }
+    summary { cursor: pointer; font-weight: 600; }
+  </style>
+</head>
+<body>
+<main>
+  <p>Build With AI: Basics by Devpost · technical reference</p>
+  <h1>Hephaestus, from request to evidence</h1>
+  <p>Hephaestus is an installed agent skill. The agent inspects and repairs an existing frontend; a local report helper checks whether the reported scope and verification statuses agree.</p>
+  <p>This is a reference route through real files, not a record of a completed learner walkthrough. It works offline and needs no JavaScript.</p>
+
+  <h2>Follow one repair</h2>
+  <ol class="flow" aria-label="Request, implementation and evidence flow">
+    <li><strong>Ask for a focused repair.</strong> <code>skills/hephaestus/SKILL.md</code> establishes the baseline, policy and authorized file scope.</li>
+    <li><strong>Try “Load projects”.</strong> <code>evals/fixtures/repair-after/app.mjs</code> handles the request and updates visible feedback. <code>evals/serve.mjs</code> supplies labeled, synthetic responses.</li>
+    <li><strong>Observe the result.</strong> <code>evals/browser-check.mjs → runChecks()</code> exercises request states and checks the actual DOM at three widths.</li>
+    <li><strong>Read the evidence.</strong> <code>skills/hephaestus/scripts/check-report.mjs → validateReport()</code> checks report consistency. It does not execute or authenticate the recorded checks.</li>
+  </ol>
+
+  <h2>Three code stops</h2>
+  <details open><summary>1. Which changes are allowed?</summary><p>Start in <a href="../skills/hephaestus/SKILL.md">SKILL.md</a>, “Establish the baseline” and “Plan and repair”. The policy comes from <code>policy/frontend-policy.json</code>; approved brand and business exceptions must survive.</p></details>
+  <details><summary>2. What changes when a request fails?</summary><p>Open <a href="../evals/fixtures/repair-after/app.mjs">the repaired request handler</a> and follow its fetch, validation and feedback paths. Compare <a href="../evals/fixtures/repair-before/app.mjs">the retained input</a>. The server returns a real simulated error; the frontend must not turn it into invented success.</p></details>
+  <details><summary>3. What does a passing checker prove?</summary><p>Open <a href="../skills/hephaestus/scripts/check-report.mjs">validateReport</a> and <a href="../tests/report.test.mjs">its tests</a>. A valid report can still be incomplete. <code>fixed_unverified</code> and a skipped browser check cannot become verified merely because JSON parsed.</p></details>
+
+  <h2>To change this, start here</h2>
+  <ul>
+    <li>Frontend policy: <code>skills/hephaestus/policy/frontend-policy.json</code>.</li>
+    <li>Fixture layout and focus: <code>evals/fixtures/repair-after/styles.css</code>.</li>
+    <li>Request scenarios: <code>evals/serve.mjs</code> and <code>tests/fixture.test.mjs</code>.</li>
+    <li>What counts as proof: <code>evals/browser-check.mjs</code> and the actual results under <code>evals/results/runnable-repair/</code>.</li>
+  </ul>
+
+  <h2>A practice to reuse</h2>
+  <p>Write down one observable result before changing code. Here, “a delayed request shows feedback” became a browser assertion that failed on the original fixture. Running the same check after the repair is stronger evidence than saying the code looks right. Keep source facts, rendered behavior and subjective design judgments separate.</p>
+
+  <h2>Run it again</h2>
+  <p>With Node 22+, run <code>npm run demo</code> from the repository. Open <code>http://127.0.0.1:4173/before/</code> and <code>/after/</code>, select a test response and press “Load projects”. Stop the server with Ctrl+C. Run <code>npm test</code> for the report and server contracts.</p>
+  <p><a href="../evals/results/runnable-repair/README.md">Observed repair evidence</a> · <a href="checklist.md">Learning checklist and remaining review</a></p>
+  <p>Source snapshot: <code>6435a03</code>, the verified runnable-evaluation implementation. Paths and behavior can drift; verify this map against the current source. No learner activity or hackathon submission is certified here.</p>
+</main>
+</body>
+</html>

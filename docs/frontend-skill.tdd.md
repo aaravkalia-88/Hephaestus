@@ -1,5 +1,7 @@
 # Frontend skill verification
 
+This records the initial package at `ec198ef`. The subsequent Devpost-guided runnable repair is documented separately in [the follow-up evidence](devpost-evaluation.tdd.md).
+
 Observed on 2026-10-24 with Node v24.19.0. These results establish report-helper behavior, package installation and one source-only agent evaluation. They do not establish successful live frontend repairs or improved aesthetic quality.
 
 ## Test-first implementation
