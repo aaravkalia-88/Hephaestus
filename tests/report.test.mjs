@@ -61,6 +61,7 @@ test('unknown claims require review and waived issues require an owner reason', 
   r.findings[0].status = 'waived';
   assert.equal(validateReport(r).valid, false);
   r.findings[0].approval = { by: 'owner', reason: 'Owner supplied provenance and requests preservation.' };
+  r.changed_files = [];
   assert.equal(validateReport(r).ready, true);
 });
 
@@ -117,4 +118,13 @@ test('CLI distinguishes valid partial reports, complete repairs and invalid inpu
     assert.equal(run([]).status, 2);
     assert.equal(run([file, '--execute']).status, 2);
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('an edit without an associated active finding cannot disappear from the report', async () => {
+  const { validateReport } = await load();
+  const r = report();
+  r.findings = [];
+  assert.equal(validateReport(r).valid, false);
+  r.findings = [finding({ status: 'waived', approval: { by: 'owner', reason: 'Keep existing brand.' } })];
+  assert.equal(validateReport(r).valid, false);
 });
