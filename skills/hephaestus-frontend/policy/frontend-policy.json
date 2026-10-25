@@ -1,0 +1,280 @@
+{
+  "policy_name": "hephaestus-professional-frontend",
+  "version": 1,
+  "mode": "strict_default",
+  "exception_policy": "explicit_owner_approval_with_reason",
+  "scope": "frontend_only",
+  "rules": [
+    {
+      "id": "FF-001",
+      "title": "Harsh gradients",
+      "required_behavior": "Remove conspicuous multi-stop gradients. Use material, texture, borders, images, or restrained flat surfaces with intentional contrast.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Strong/multi-stop CSS gradients; screenshot review",
+      "remedy": "Replace decorative harsh gradients with purposeful flat/layered composition."
+    },
+    {
+      "id": "FF-002",
+      "title": "Lucide icons",
+      "required_behavior": "Do not add Lucide or use `lucide-react` as a default icon shortcut. Replace generic decorative instances with purposeful custom SVG, licensed iconography, or meaningful text.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Imports and usage from Lucide packages",
+      "remedy": "Replace with product-appropriate custom/approved icon or text; avoid arbitrary icon substitution."
+    },
+    {
+      "id": "FF-003",
+      "title": "Pure white backgrounds",
+      "required_behavior": "Avoid full-page `#FFFFFF` / `rgb(255 255 255)` backgrounds. Use considered off-white or tinted neutral surfaces; preserve necessary contrast.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Root/body pure-white background and computed styles",
+      "remedy": "Introduce deliberate neutral surface token; verify contrast."
+    },
+    {
+      "id": "FF-004",
+      "title": "Rainbow coloring",
+      "required_behavior": "Avoid using many unrelated accent hues. Build a curated, intentional palette.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Excess number of unrelated accent hues",
+      "remedy": "Consolidate into curated accent roles, preserving actual data visualizations."
+    },
+    {
+      "id": "FF-005",
+      "title": "Purple or dark gradients",
+      "required_behavior": "Do not use generic purple glows or dark gradient hero backgrounds.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Purple gradients and dark-gradient hero combinations",
+      "remedy": "Remove generic gradient effect; preserve brand-approved colors."
+    },
+    {
+      "id": "FF-006",
+      "title": "Drop shadows",
+      "required_behavior": "Remove template-style large, soft, floating shadows. Establish depth through spacing, borders, layered surfaces, and hierarchy.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Large repeated CSS box shadows",
+      "remedy": "Shift separation to borders, spacing, tone, and hierarchy."
+    },
+    {
+      "id": "FF-007",
+      "title": "Three feature cards in a row",
+      "required_behavior": "Do not default to the predictable three-across feature section. Use product-led layouts, editorial sections, real screenshots, or purposeful asymmetry.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Repeated 3-column marketing-card groups",
+      "remedy": "Refactor into content-led layout and actual product evidence."
+    },
+    {
+      "id": "FF-008",
+      "title": "Liquid glass",
+      "required_behavior": "Avoid frosted acrylic, glassmorphism, oversized backdrop blurs, and translucent glass panels as a theme.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "`backdrop-filter`, translucent glass UI, blurred panels",
+      "remedy": "Remove glass treatment and use solid, legible surfaces."
+    },
+    {
+      "id": "FF-009",
+      "title": "Em dashes",
+      "required_behavior": "Do not generate em dashes (`—`) in visible interface or marketing copy. Rewrite sentences naturally using a period, colon, or comma.",
+      "enabled": true,
+      "action": "safe_autofix",
+      "detection": "Unicode em dash in UI text, JSX literals, and content strings",
+      "remedy": "Rewrite sentence naturally without an em dash."
+    },
+    {
+      "id": "FF-010",
+      "title": "Inter / Geist / Space Grotesk",
+      "required_behavior": "Do not choose these as the automatic typography stack. Select a distinctive, suitable, licensed font or a considered system stack.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Font imports or stacks defaulting to Inter, Geist, Space Grotesk",
+      "remedy": "Suggest or implement approved replacement with appropriate fallbacks."
+    },
+    {
+      "id": "FF-011",
+      "title": "Colored left stripe",
+      "required_behavior": "Avoid generic colorful left-border callout cards. Use stronger information structure and restrained emphasis.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Accent-colored left borders on generic marketing blocks",
+      "remedy": "Replace with semantic grouping and restrained emphasis."
+    },
+    {
+      "id": "FF-012",
+      "title": "Fake testimonials",
+      "required_behavior": "Never invent quotes, reviewers, company logos, numbers, or implied endorsements. Keep only verifiable, approved social proof.",
+      "enabled": true,
+      "action": "owner_review",
+      "detection": "Unverified testimonial and customer-logo claims",
+      "remedy": "Request provenance and approval; never automatically invent replacements."
+    },
+    {
+      "id": "FF-013",
+      "title": "Bento grids",
+      "required_behavior": "Do not default to generic bento-grid feature layouts. Design for content and tasks instead.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Repetitive mixed-span bento feature-card template",
+      "remedy": "Move to product-led or editorial arrangement."
+    },
+    {
+      "id": "FF-014",
+      "title": "Terminal windows",
+      "required_behavior": "Avoid faux command-line panels as decorative proof of technical sophistication. Only show an actual functioning technical interface when relevant.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Fake terminal chrome or code panel on nontechnical flow",
+      "remedy": "Replace with actual user-visible product UI where evidence exists."
+    },
+    {
+      "id": "FF-015",
+      "title": "“It's not X, it's Y”",
+      "required_behavior": "Remove this stock rhetorical structure from generated copy. Explain concrete value instead.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Stock negation formula such as “not X, it's Y”",
+      "remedy": "Replace with direct, specific description of the benefit."
+    },
+    {
+      "id": "FF-016",
+      "title": "Checkmark bullets",
+      "required_behavior": "Avoid repetitive green-check marketing lists. Use concise copy, actual product evidence, and conventional list styling where needed.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Green-check emoji/icons repeated as marketing bullets",
+      "remedy": "Use readable content, conventional bullets, or data-driven proof."
+    },
+    {
+      "id": "FF-017",
+      "title": "Three pricing tiers",
+      "required_behavior": "Never generate three arbitrary pricing plans to fill a template. Preserve genuine business-configured plans, whatever their number.",
+      "enabled": true,
+      "action": "preserve_business_truth",
+      "detection": "Three pricing plans generated solely by template pattern",
+      "remedy": "Do not generate arbitrary plans; preserve source-of-truth pricing."
+    },
+    {
+      "id": "FF-018",
+      "title": "No real product demos",
+      "required_behavior": "Product marketing must show a real captured UI, working preview, or verified demonstration when a demo is claimed. Never fabricate the UI or footage.",
+      "enabled": true,
+      "action": "verify_or_flag",
+      "detection": "Demo CTA pointing to placeholder, mock UI, or nonfunctional target",
+      "remedy": "Connect to working demo or accurately label authentic preview; flag unresolved proof."
+    },
+    {
+      "id": "FF-019",
+      "title": "Soft corner radius",
+      "required_behavior": "Avoid universally oversized rounded cards, buttons, and inputs. Use a controlled shape scale with generally sharper, practical corners.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Uniform, exaggerated border radius across components",
+      "remedy": "Normalize to a measured radius scale, preserving usability."
+    },
+    {
+      "id": "FF-020",
+      "title": "Purple and black",
+      "required_behavior": "Avoid the clichéd purple-on-black AI-site aesthetic. Respect the product's actual branding instead.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Purple plus black default AI-site theme",
+      "remedy": "Replace aesthetic cliché with coherent product branding."
+    },
+    {
+      "id": "FF-021",
+      "title": "No skeleton loader",
+      "required_behavior": "**Add appropriate loading states** for meaningful asynchronous regions. Use content-shaped skeletons when a real wait is expected, not decorative loading everywhere.",
+      "enabled": true,
+      "action": "inspect_async_states",
+      "detection": "Asynchronous content with missing visible loading treatment",
+      "remedy": "Implement proportional skeleton or equivalent appropriate progress state plus error/empty states."
+    },
+    {
+      "id": "FF-022",
+      "title": "Radial orbs",
+      "required_behavior": "Remove glowing decorative orbs, blurred radial color blobs, and empty atmospheric effects.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "CSS blurred gradient orbs and radial glow ornaments",
+      "remedy": "Remove unnecessary orbital decoration."
+    },
+    {
+      "id": "FF-023",
+      "title": "Dot grids",
+      "required_behavior": "Avoid background dot grids as generic tech decoration.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Repeating radial dot backgrounds or pseudo-element dot grid",
+      "remedy": "Remove nonfunctional decorative dot textures."
+    },
+    {
+      "id": "FF-024",
+      "title": "Sparkle icons",
+      "required_behavior": "Remove decorative sparkles and magic-wand cues unless a genuinely necessary product action requires a specific symbol.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Sparkles/\"magic\" icons without task meaning",
+      "remedy": "Remove or use accurate action label/icon."
+    },
+    {
+      "id": "FF-025",
+      "title": "Animated arrows",
+      "required_behavior": "Do not use perpetual arrow bounce, nudge, or hover gimmicks as a substitute for navigation clarity.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Continuously animated arrows or CTA nudge loops",
+      "remedy": "Remove ornamental motion, retain functional state transitions."
+    },
+    {
+      "id": "FF-026",
+      "title": "Sparkle icons (repeated)",
+      "required_behavior": "Same policy as #24. Tracked for input completeness, implemented as one shared rule.",
+      "enabled": true,
+      "action": "alias",
+      "detection": "Alias of FF-024",
+      "remedy": "No second independent detector.",
+      "alias_of": "FF-024"
+    },
+    {
+      "id": "FF-027",
+      "title": "No privacy policy",
+      "required_behavior": "**Require an accessible, accurate privacy policy** for products collecting or processing personal data. Flag missing or unverifiable details for owner review.",
+      "enabled": true,
+      "action": "owner_review_blocker_if_applicable",
+      "detection": "Personal-data flow and missing or dead privacy disclosure link",
+      "remedy": "Flag blocker/needs review; owner must supply accurate policy facts."
+    },
+    {
+      "id": "FF-028",
+      "title": "Neon colors",
+      "required_behavior": "Avoid fluorescent accents and glowing outlines as a general design system.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "Fluorescent/neon accents and widespread outer glows",
+      "remedy": "Shift to accessible, brand-suitable accents without neon glow."
+    },
+    {
+      "id": "FF-029",
+      "title": "Basic single-color palettes",
+      "required_behavior": "Avoid lazy monochrome defaults. Use a coherent neutral foundation and a small set of complementary, purposeful accents, without turning it into a rainbow.",
+      "enabled": true,
+      "action": "propose_fix",
+      "detection": "One-color default palette with no purposeful visual hierarchy",
+      "remedy": "Add coordinated neutral, text, surface, and limited accent roles."
+    },
+    {
+      "id": "FF-030",
+      "title": "Unprofessional overall result",
+      "required_behavior": "Enforce coherent design, real content, working interactions, responsiveness, accessibility, performance, and visual consistency.",
+      "enabled": true,
+      "action": "evidence_based_gate",
+      "detection": "Aggregate quality failures across visual, functional, a11y, performance, and credibility checks",
+      "remedy": "Generate report and plan based on concrete sub-findings, never taste-only score."
+    }
+  ]
+}

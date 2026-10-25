@@ -1,0 +1,6 @@
+interface:
+  display_name: "Hephaestus: Backend Fixer"
+  short_description: "Fix backend code with security guardrails"
+  icon_small: "./assets/hephaestus-logo.png"
+  icon_large: "./assets/hephaestus-logo.png"
+  default_prompt: "Use $hephaestus-backend to show its introduction, then audit and repair this backend within the authorized scope with evidence."

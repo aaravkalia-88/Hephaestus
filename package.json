@@ -4,6 +4,7 @@
   "type": "module",
   "engines": { "node": ">=22" },
   "scripts": {
+    "package:skills": "node scripts/package-skills.mjs",
     "demo": "node evals/serve.mjs",
     "test": "node --test tests/*.test.mjs",
     "test:coverage": "node --test --experimental-test-coverage tests/*.test.mjs",
