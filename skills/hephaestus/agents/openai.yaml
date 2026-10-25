@@ -1,6 +1,6 @@
 interface:
   display_name: "Hephaestus"
-  short_description: "Choose Frontend Fixer or Backend Fixer"
+  short_description: "Stop AI slop before it ships."
   icon_small: "./assets/hephaestus-logo.png"
   icon_large: "./assets/hephaestus-logo.png"
   default_prompt: "Use $hephaestus to show its logo and welcome README, then offer Frontend Fixer or Backend Fixer and follow the chosen scope."

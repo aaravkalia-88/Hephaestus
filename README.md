@@ -4,6 +4,8 @@
 
 # Hephaestus
 
+**Stop AI slop before it ships.**
+
 An installable skill with **Frontend Fixer** and **Backend Fixer** modes for auditing and repairing existing code inside a coding agent. It combines the owner's 30-rule frontend anti-slop policy with seven backend security guardrails, scoped edits and honest verification evidence.
 
 Developed as a proof of concept for **Build With AI: Basics by Devpost**, using the [Devpost Learn Skill Pack](https://github.com/challengepost/learn-ai-basics) to structure planning, a runnable repair experiment, review and learning documentation.

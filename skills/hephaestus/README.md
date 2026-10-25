@@ -2,7 +2,7 @@
 
 # Hephaestus
 
-**No more AI slop.**
+**Stop AI slop before it ships.**
 
 Audit and repair existing frontend and backend code inside your coding agent, with scoped changes and evidence of what works.
 
