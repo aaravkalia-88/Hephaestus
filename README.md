@@ -46,7 +46,7 @@ The package uses the [Agent Skills format](https://agentskills.io/specification)
 
 ## Use
 
-In Codex, invoke `$hephaestus`. In Claude Code, invoke `/hephaestus`. If the target is unclear, the skill offers **Hephaestus: Frontend Fixer** and **Hephaestus: Backend Fixer**. Choose directly with:
+In Codex, invoke `$hephaestus`. In Claude Code, invoke `/hephaestus`. On the first explicit invocation in a chat, the skill presents its logo and [short welcome README](skills/hephaestus/README.md), then offers **Hephaestus: Frontend Fixer** and **Hephaestus: Backend Fixer** if the target is unclear. The image and welcome are bundled with the installation. Inline image rendering depends on the host; text and a usable image link are the fallback. Ask for “Hephaestus about” or its README to see the welcome again. Choose directly with:
 
 ```text
 $hephaestus frontend
@@ -69,6 +69,7 @@ For backend work, request the actual project and desired audit/repair scope, wit
 | File | Purpose |
 | --- | --- |
 | [SKILL.md](skills/hephaestus/SKILL.md) | Portable audit, repair and verification workflow |
+| [Welcome README](skills/hephaestus/README.md) | In-chat introduction, bundled logo and fixer choices |
 | [Frontend policy](skills/hephaestus/policy/frontend-policy.json) | All 30 supplied standards; FF-026 aliases FF-024 |
 | [Backend workflow](skills/hephaestus/references/backend.md) | Real server audit/repair procedure and security boundaries |
 | [Backend policy](skills/hephaestus/policy/backend-policy.json) | BF-001 to BF-007: the seven mandatory security areas |

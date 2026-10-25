@@ -8,6 +8,12 @@ license: MIT. See LICENSE and THIRD_PARTY_NOTICES.md.
 
 Audit and repair existing project code and show what proves the result. Work inside the coding agent; no hosted service is bundled.
 
+## Show the welcome
+
+On the first explicit invocation of Hephaestus in a chat, or when the user asks for its about/README, read [the bundled welcome README](README.md) and render it in the chat, including the existing logo. Resolve its relative image path against this installed skill folder; use an absolute local image path when supported by the host. Render Markdown directly, not inside a code block. If inline images are unavailable, show the README text and a usable image link without claiming it rendered. The full technical project README is linked from the welcome.
+
+Then follow the user's chosen mode or offer the two options below. An explicit frontend/backend request continues directly after the welcome. Show the welcome only for an explicit invocation or an about request, not incidental automatic selection, and do not repeat it during progress updates unless requested.
+
 ## Choose a fixer
 
 When invoked without a target that is explicit or clear from the request, offer these two options and ask the user to choose before auditing:
