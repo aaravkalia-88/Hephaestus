@@ -7,23 +7,24 @@ Use `.hephaestus/report.json` as the machine-readable record and explain the use
 | Field | Meaning |
 | --- | --- |
 | `schema_version` | `1` |
+| `target` | `frontend` or `backend`; omitted means `frontend` for older reports |
 | `mode` | `audit` or `repair` |
 | `baseline` | Actual Git revision or a recorded snapshot identifier |
 | `approved_files` | Project-relative paths authorized for changes; no parent traversal or absolute paths |
 | `changed_files` | Actual changed project files, each within the approved list and mapped to an active finding |
 | `required_checks` | IDs of the checks relevant to the agreed work; determine these before editing |
 | `checks` | Actual check observations with unique `id`, `kind`, `status` and `evidence` |
-| `findings` | Evidence-backed issues using the policy IDs |
+| `findings` | Evidence-backed issues using FF policy IDs for frontend, BF policy IDs for backend |
 
-Check statuses are `pass`, `fail`, `skipped`, `needs_review`. State the reason when a check cannot run. A `browser` check also needs its numeric `width` and matching `route`. Other kinds can be `build`, `types`, `lint`, `tests`, `interaction`, `accessibility`, `async`, `privacy`, or `provenance` as appropriate. Include commands, observed results and artifact paths in the evidence observation. Never put a secret or an execution instruction in it.
+Check statuses are `pass`, `fail`, `skipped`, `needs_review`. State the reason when a check cannot run. Backend security checks BF-002, BF-004 and BF-006 additionally allow `not_applicable` with a nonempty `reason` and evidence that their auth, database or exposed-request surface is absent; missing tools are `skipped`. A `browser` check also needs its numeric `width` and matching `route`. Other kinds can be `build`, `types`, `lint`, `tests`, `integration`, `api`, `security`, `interaction`, `accessibility`, `async`, `privacy`, or `provenance` as appropriate. Include commands, observed results and artifact paths in the evidence observation. Never put a secret or an execution instruction in it.
 
 Each finding has:
 
 - A unique `id`, a policy `rule_id`, `severity` (`blocker`, `high`, `medium`, `low`) and `confidence` (`high`, `medium`, `low`). Severity is about the consequence; a style suspicion does not become a functional blocker.
 - `route` and `file` when known, otherwise `null`. Optional `lines` use positive one-based `start` and `end` values. A global issue may have one finding per affected file or route.
-- A nonempty `evidence` list: each entry has `kind` (`source`, `browser`, `screenshot`, `owner`) and an actual `summary`. Include the excerpt, observed event, capture path or owner statement. Distinguish a subjective recommendation from measured behavior.
+- A nonempty `evidence` list: each entry has `kind` (`source`, `browser`, `screenshot`, `owner` for frontend; `source`, `test`, `runtime`, `owner` for backend) and an actual `summary`. Include the sanitized excerpt, observed event, artifact path or owner statement. Distinguish a subjective recommendation from measured behavior.
 - `why_it_matters`, `proposed_change`, `regression_risk` and `status`.
-- `verification_checks`: IDs of checks that establish this issue's outcome. An empty array is honest for an unresolved issue. For `verified`, every referenced check must pass and include browser observations at 390, 768 and 1440 for this finding's route.
+- `verification_checks`: IDs of checks that establish this issue's outcome. An empty array is honest for an unresolved issue. For `verified`, every referenced check must pass. Frontend findings require browser observations at 390, 768 and 1440 for this finding's route. Backend findings require their own passing BF security check and at least one passing `tests`, `integration` or `api` check.
 - For `waived`, `approval: {"by": "owner", "reason": "actual owner decision"}`. This records an approval already received; it never grants one.
 
 Finding statuses:
@@ -39,7 +40,13 @@ Finding statuses:
 
 Unknown endorsement or demonstration provenance remains `needs_review`. Privacy-link presence and owner-confirmed policy facts are separate observations. Record backend failures in the narrative or a separate handoff using the ARC fields; do not include private requests or auth data.
 
-FF-026 resolves to FF-024. Duplicates at the same location count once; conflicting statuses are invalid. Audit mode requires `changed_files: []`. A repair is complete only when its required checks pass, no reported check fails, and all findings are verified or explicitly waived. Otherwise present the truthful partial result.
+## Backend security gates
+
+Every backend report must include seven checks, IDs BF-001 to BF-007, each `kind: "security"`, all listed in `required_checks`. They cover secrets, authentication, server validation/permissions, database access, dependencies, rate limits and security analysis, respectively. Set each actual observed status and sanitized evidence. An audit can be valid with skipped checks and no changes; it cannot be complete.
+
+Backend completion needs every required check to pass (or a permitted, evidenced `not_applicable` security check), plus at least one passing required `tests`, `integration` or `api` suite. All findings must be verified or explicitly waived; no reported check may fail. A waiver does not bypass these security checks. A verified finding cannot use an inapplicable gate as proof. The checker cannot authenticate a reason, test result or scan: review them against the actual project.
+
+FF-026 resolves to FF-024. Duplicates at the same location count once; conflicting statuses are invalid. Audit mode requires `changed_files: []`. Completion follows the target's check rules above, requires no reported failed check and requires all findings to be verified or explicitly waived. Otherwise present the truthful partial result.
 
 ## Minimal audit example
 

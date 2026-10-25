@@ -1,12 +1,29 @@
 ---
 name: hephaestus
-description: Audit and repair existing frontends using an evidence-based 30-rule anti-slop policy. Use for generic AI styling, broken UI states, responsive or accessibility defects, and frontend cleanup. Preserve brand, business facts, and backend contracts.
+description: Audit and repair existing code with two modes, Frontend Fixer and Backend Fixer. Use for frontend anti-slop, UI, accessibility and async-state repairs, or backend secrets, authentication, validation, database access, dependency, rate-limit and security defects. Preserve brand, data and integration contracts.
 license: MIT. See LICENSE and THIRD_PARTY_NOTICES.md.
 ---
 
 # Hephaestus
 
-Repair an existing frontend and show what proves the result. Work inside the coding agent; this is not a hosted service or a text-to-website generator. React and Next.js are the first supported workflows. Adapt source inspection to other stacks without claiming untested support.
+Audit and repair existing project code and show what proves the result. Work inside the coding agent; no hosted service is bundled.
+
+## Choose a fixer
+
+When invoked without a target that is explicit or clear from the request, offer these two options and ask the user to choose before auditing:
+
+| Option | Invocation example | Scope |
+| --- | --- | --- |
+| **Hephaestus: Frontend Fixer** | `$hephaestus frontend` or `hephaestus:frontend fixer` | UI, anti-slop, accessibility, responsiveness and frontend request states |
+| **Hephaestus: Backend Fixer** | `$hephaestus backend` or `hephaestus:backend fixer` | Server behavior and the seven backend security guardrails |
+
+These are modes of this skill, not separately registered slash commands. In Claude Code, use `/hephaestus frontend` or `/hephaestus backend`. If the user calls them a frontend/backend "fixture" but asks to fix real code, use the corresponding fixer. Demo fixtures are separate evaluation material.
+
+An explicit choice needs no repeated mode question. For **Backend Fixer**, read [the backend workflow](references/backend.md), [backend policy](policy/backend-policy.json) and [report contract](references/report.md); follow that workflow instead of the frontend sections below. For **Frontend Fixer**, follow the remaining sections. If both are requested, use separate scopes and reports with explicit `target` values; do not silently switch targets or mix frontend and backend findings.
+
+## Frontend Fixer
+
+React and Next.js are the first supported frontend workflows. Adapt source inspection to other stacks without claiming untested support. Set report `target` to `frontend`; legacy reports without this field still mean frontend.
 
 ## Policy and boundaries
 

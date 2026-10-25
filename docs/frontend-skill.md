@@ -14,15 +14,19 @@ The owner's [ARC](arc.md) and [product specification](pro.md) are preserved as s
 
 The skill delegates source understanding and repairs to the host model and tools. It does not pretend that a regex script automatically detects all 30 standards. Each registry entry contains the detection guidance and required behavior for the agent. React and Next.js are the primary workflows; source-level review of other frameworks uses the same policy without claiming identical runtime coverage.
 
-The only executable shipped in the skill is a local JSON report consistency checker, built with Node's standard library. It prevents obvious status, alias and file-scope contradictions. It cannot attest that screenshots, check results or approvals are authentic. No model API, accounts, telemetry, database, new frontend framework or custom installer is needed.
+The only executable shipped in the skill is a local JSON report consistency checker, built with Node's standard library. It prevents obvious status, alias and file-scope contradictions and enforces target-specific completion evidence. It cannot attest that screenshots, check results or approvals are authentic. No model API, accounts, telemetry, database, new frontend framework or custom installer is needed.
 
 ## Implemented architecture
 
 ```mermaid
 flowchart TD
     User[User selects project and scope] --> Host[Host coding agent]
-    Skill[Hephaestus skill and 30-rule policy] --> Host
-    Host --> Target[Isolated target frontend]
+    Skill[Hephaestus mode selection] --> Host
+    Skill --> Frontend[Frontend Fixer: 30 FF rules]
+    Skill --> Backend[Backend Fixer: seven BF security guardrails]
+    Frontend --> Host
+    Backend --> Host
+    Host --> Target[Isolated target project]
     Target --> Browser[Local browser and project checks]
     Browser --> Evidence[Local evidence, report and diff]
     Evidence --> Checker[Optional Node report consistency check]
@@ -34,7 +38,9 @@ flowchart TD
     After --> Browser
 ```
 
-The host agent is the execution boundary: Hephaestus does not supply a separate model or service. Source, browser data and reports remain local unless publication is explicitly authorized. The report helper reads JSON only. The optional evaluation server binds to `127.0.0.1`, serves an explicit asset list and synthetic read-only responses, and has no persistence, credentials or external API. It is test infrastructure; no Backend Fixer or hosted product API is implemented.
+The host agent is the execution boundary: Hephaestus does not supply a separate model or service. Source, browser data and reports remain local unless publication is explicitly authorized. The report helper reads JSON only. The optional evaluation server binds to `127.0.0.1`, serves an explicit asset list and synthetic read-only responses, and has no persistence, credentials or external API. It remains frontend test infrastructure. The new [Backend Fixer workflow](../skills/hephaestus/references/backend.md) operates on real server code in the selected project; no hosted product API is installed.
+
+Frontend and backend reports use separate `target` values and policy namespaces. Missing `target` retains the old frontend behavior. Frontend verification still requires route-matched 390/768/1440 browser observations. Backend verification requires seven named security gates and behavior tests; skipped gates block completion. The checker cannot establish whether reported observations are authentic or protect a running application by itself.
 
 ## Taste contribution
 
