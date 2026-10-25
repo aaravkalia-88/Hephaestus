@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Materialize standalone picker entries from the maintained Hephaestus package.
-import { cpSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join, relative } from 'node:path';
 
@@ -15,7 +15,8 @@ for (const target of ['frontend', 'backend']) {
   const title = `Hephaestus: ${target === 'frontend' ? 'Frontend' : 'Backend'} Fixer`;
   const dest = join(root, name);
   mkdirSync(dest, { recursive: true });
-  cpSync(core, dest, { recursive: true, filter: source => target !== 'backend' || relative(core, source).split('/')[0] !== 'vendor' });
+  cpSync(core, dest, { recursive: true, filter: source => target !== 'backend' || (relative(core, source).split('/')[0] !== 'vendor' && relative(core, source) !== join('references', 'taste.md')) });
+  if (target === 'backend') rmSync(join(dest, 'references/taste.md'), { force: true });
   const description = target === 'frontend'
     ? 'Audit and repair existing frontends with the Hephaestus 30-rule policy, bundled Taste direction tools, source lint and browser inspection. Select this for UI, accessibility, responsive layout and frontend state defects.'
     : 'Audit and repair existing backend code with Hephaestus security guardrails for secrets, authentication, validation, data access, dependencies, rate limits and security analysis.';

@@ -14,7 +14,7 @@ The owner's [ARC](arc.md) and [product specification](pro.md) are preserved as s
 
 The skill delegates source understanding and repairs to the host model and tools. It does not pretend that a regex script automatically detects all 30 standards. Each registry entry contains the detection guidance and required behavior for the agent. React and Next.js are the primary workflows; source-level review of other frameworks uses the same policy without claiming identical runtime coverage.
 
-The only executable shipped in the skill is a local JSON report consistency checker, built with Node's standard library. It prevents obvious status, alias and file-scope contradictions and enforces target-specific completion evidence. It cannot attest that screenshots, check results or approvals are authentic. No model API, accounts, telemetry, database, new frontend framework or custom installer is needed.
+The report consistency checker uses Node's standard library to reject status, alias, scope and completion contradictions. Frontend-capable packages also include pinned Taste source tools for design directions, source lint and real-browser inspection. These tools do not attest that check results or approvals are authentic. No model API, account system, database, new frontend framework or custom installer is needed.
 
 ## Implemented architecture
 
@@ -44,7 +44,9 @@ Frontend and backend reports use separate `target` values and policy namespaces.
 
 ## Taste contribution
 
-The [Taste-derived reference](../skills/hephaestus/references/taste.md) retains the subject-specific design rationale, page/app distinction and real-render critique loop from Leonxlnx/taste-skill at `6010f91a9935f1c167dfc500fb1a475681892e6b`. Its MIT notice is bundled. Hephaestus uses the owner's stricter policy, rather than Taste's full house-style engine or mandatory motion/image quotas. No upstream media, font files, scene library or generator runtime is vendored.
+The [Taste integration](../skills/hephaestus/references/taste.md) now bundles the pinned source tools, JSON libraries, references and CSS/JS foundations from Leonxlnx/taste-skill at `6010f91a9935f1c167dfc500fb1a475681892e6b`, preserving its MIT license. Hephaestus uses the owner's stricter policy and explicit brand decisions. Browser inspection disables upstream media/motion quotas; both browser helpers reject filesystem targets to avoid source-tree exposure. Raw Taste diagnostics remain distinct from evidence-backed FF findings. No media/font files or missing scene catalogue are invented or bundled.
+
+Three actual skill directories provide the router and direct frontend/backend picker entries. The repository's `scripts/package-skills.mjs` materializes standalone entries from the canonical package; an isolated regeneration test detects drift. Frontend-capable entries include Taste, while Backend Fixer does not carry its runtime. Each entry has its own metadata, logo, policies and report helper.
 
 ## Verification scope
 

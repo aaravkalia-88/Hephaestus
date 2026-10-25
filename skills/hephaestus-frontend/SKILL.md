@@ -40,7 +40,7 @@ When runnable, capture selected routes at **390, 768 and 1440 pixels**, includin
 
 Missing runtime access means `runtime_unavailable` in the narrative and `skipped` checks in the report. Never synthesize evidence. Review source for likely personal-data collection; FF-027 applies when that flow exists. Verify the privacy link and ask the owner for policy facts, rather than generating legal promises. Unknown testimonial or demo provenance is `needs_review`.
 
-Use [Taste-derived guidance](references/taste.md) for subject-specific composition, page/app distinctions and before/after critique. The Hephaestus policy and owner choices govern if Taste's house rules differ. No minimum photograph or animation quota applies.
+Use [Taste integration](references/taste.md) for the bundled direction drawer, source lint, browser inspector, page/app guidance and screenshot critique. Read it before running those helpers. The Hephaestus policy and owner choices govern if Taste's house rules differ. No minimum photograph or animation quota applies.
 
 ## 3. Plan and repair
 

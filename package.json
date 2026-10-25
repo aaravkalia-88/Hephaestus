@@ -7,7 +7,7 @@
     "package:skills": "node scripts/package-skills.mjs",
     "demo": "node evals/serve.mjs",
     "test": "node --test tests/*.test.mjs",
-    "test:coverage": "node --test --experimental-test-coverage tests/*.test.mjs",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-exclude=skills/**/vendor/** --test-coverage-exclude=tests/** tests/*.test.mjs",
     "check": "node --check skills/hephaestus/scripts/check-report.mjs && node --check evals/serve.mjs && node --check evals/browser-check.mjs && node --check evals/fixtures/repair-after/app.mjs"
   }
 }

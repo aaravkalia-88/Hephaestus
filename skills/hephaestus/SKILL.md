@@ -18,12 +18,14 @@ Then follow the user's chosen mode or offer the two options below. An explicit f
 
 When invoked without a target that is explicit or clear from the request, offer these two options and ask the user to choose before auditing:
 
+Use the host's native choice/question UI when available, with **Frontend Fixer** and **Backend Fixer** as the two choices; otherwise present a single plain-language choice. The separately installed skills below are actual skill-picker entries. Do not claim a picker entry exists when only this router was installed.
+
 | Option | Invocation example | Scope |
 | --- | --- | --- |
-| **Hephaestus: Frontend Fixer** | `$hephaestus frontend` or `hephaestus:frontend fixer` | UI, anti-slop, accessibility, responsiveness and frontend request states |
-| **Hephaestus: Backend Fixer** | `$hephaestus backend` or `hephaestus:backend fixer` | Server behavior and the seven backend security guardrails |
+| **Hephaestus: Frontend Fixer** | `$hephaestus-frontend` | UI, anti-slop, accessibility, responsiveness and frontend request states |
+| **Hephaestus: Backend Fixer** | `$hephaestus-backend` | Server behavior and the seven backend security guardrails |
 
-These are modes of this skill, not separately registered slash commands. In Claude Code, use `/hephaestus frontend` or `/hephaestus backend`. If the user calls them a frontend/backend "fixture" but asks to fix real code, use the corresponding fixer. Demo fixtures are separate evaluation material.
+The package now ships three installable skills: this router, `hephaestus-frontend`, and `hephaestus-backend`. Install all three to see both direct entries in the skill picker. In Claude Code the direct commands are `/hephaestus-frontend` and `/hephaestus-backend`. Existing `$hephaestus frontend` and `$hephaestus backend` requests still work. Demo fixtures remain separate evaluation material.
 
 An explicit choice needs no repeated mode question. For **Backend Fixer**, read [the backend workflow](references/backend.md), [backend policy](policy/backend-policy.json) and [report contract](references/report.md); follow that workflow instead of the frontend sections below. For **Frontend Fixer**, follow the remaining sections. If both are requested, use separate scopes and reports with explicit `target` values; do not silently switch targets or mix frontend and backend findings.
 
@@ -59,7 +61,7 @@ When runnable, capture selected routes at **390, 768 and 1440 pixels**, includin
 
 Missing runtime access means `runtime_unavailable` in the narrative and `skipped` checks in the report. Never synthesize evidence. Review source for likely personal-data collection; FF-027 applies when that flow exists. Verify the privacy link and ask the owner for policy facts, rather than generating legal promises. Unknown testimonial or demo provenance is `needs_review`.
 
-Use [Taste-derived guidance](references/taste.md) for subject-specific composition, page/app distinctions and before/after critique. The Hephaestus policy and owner choices govern if Taste's house rules differ. No minimum photograph or animation quota applies.
+Use [Taste integration](references/taste.md) for the bundled direction drawer, source lint, browser inspector, page/app guidance and screenshot critique. Read it before running those helpers. The Hephaestus policy and owner choices govern if Taste's house rules differ. No minimum photograph or animation quota applies.
 
 ## 3. Plan and repair
 

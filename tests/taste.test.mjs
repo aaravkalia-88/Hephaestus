@@ -39,12 +39,14 @@ test('bundled source lint detects a gradient and preserves real code typography'
   assert.equal(JSON.parse(code.stdout).findings.some(finding => finding.id === 'mono'), false);
 });
 
-test('bundled inspector rejects filesystem targets before opening a browser or serving private files', t => {
+test('bundled browser helpers reject filesystem targets before opening a browser or serving private files', t => {
   const { dir, run } = fixture(t);
   const file = join(dir, 'index.html');
   writeFileSync(file, '<h1>Private source fixture</h1>');
-  const result = run('inspect.mjs', [file, '--json']);
-  assert.equal(result.status, 2, result.stderr);
-  assert.match(result.stderr, /HTTP|URL/i);
+  for (const script of ['inspect.mjs', 'scenes.mjs']) {
+    const result = run(script, [file, '--json']);
+    assert.equal(result.status, 2, result.stderr);
+    assert.match(result.stderr, /HTTP|URL/i);
+  }
   assert.equal(existsSync(join(dir, '.taste-skill/inspect')), false);
 });

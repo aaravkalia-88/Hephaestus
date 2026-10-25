@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { cpSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 for (const target of ['frontend', 'backend']) {
   test(`${target} has a distinct, standalone installable skill`, async t => {
@@ -25,3 +27,25 @@ for (const target of ['frontend', 'backend']) {
     assert.ok(readFileSync(join(installed, 'assets/hephaestus-logo.png')).length > 0);
   });
 }
+
+test('standalone packages can be regenerated in isolation without drift', t => {
+  const dir = mkdtempSync(join(tmpdir(), 'hephaestus-materialize-'));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  cpSync(new URL('../skills/hephaestus/', import.meta.url), join(dir, 'skills/hephaestus'), { recursive: true });
+  cpSync(new URL('../scripts/', import.meta.url), join(dir, 'scripts'), { recursive: true });
+  const digest = base => {
+    const hash = createHash('sha256');
+    for (const path of readdirSync(base, { recursive: true }).sort()) {
+      if (statSync(join(base, path)).isFile()) { hash.update(path); hash.update(readFileSync(join(base, path))); }
+    }
+    return hash.digest('hex');
+  };
+  for (let repeat = 0; repeat < 2; repeat++) {
+    const result = spawnSync(process.execPath, [join(dir, 'scripts/package-skills.mjs')], { encoding: 'utf8' });
+    assert.equal(result.status, 0, result.stderr);
+    for (const target of ['frontend', 'backend']) {
+      const name = `hephaestus-${target}`;
+      assert.equal(digest(join(dir, 'skills', name)), digest(fileURLToPath(new URL(`../skills/${name}/`, import.meta.url))));
+    }
+  }
+});

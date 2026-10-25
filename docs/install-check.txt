@@ -2,3 +2,9 @@ Tested with skills CLI 1.7.4 against an isolated local checkout.
 Project-local Codex and Claude Code projections copied all skill files intact.
 Both installed report helpers accepted a valid partial audit and reported ready=false.
 This checks packaging, not live agent behavior or every supported host.
+
+2026-10-25 follow-up: CLI 1.7.4 discovers exactly three entries: hephaestus,
+hephaestus-frontend and hephaestus-backend. Isolated Codex and Claude Code copy
+installs contain 50, 50 and 12 files respectively, all matching source. Each direct
+entry's helper runs from a standalone copy. Regeneration is checked twice for drift.
+Frontend-capable entries now bundle pinned, attributed Taste tools; backend does not.

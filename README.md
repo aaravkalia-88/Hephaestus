@@ -33,16 +33,16 @@ Learner document review, hands-on feedback, the learning wrap-up, demo recording
 From the project you want to improve:
 
 ```sh
-npx skills add aaravkalia-88/Hephaestus --skill hephaestus
+npx skills add aaravkalia-88/Hephaestus --skill hephaestus hephaestus-frontend hephaestus-backend
 ```
 
 Choose your agent when prompted. For specific agents:
 
 ```sh
-npx skills add aaravkalia-88/Hephaestus --skill hephaestus --agent codex claude-code
+npx skills add aaravkalia-88/Hephaestus --skill hephaestus hephaestus-frontend hephaestus-backend --agent codex claude-code
 ```
 
-Add `-g` if you want a user-level installation across projects. The installer needs Node 22.20+; the optional report helper needs Node 22+. Manual installation is also possible: copy the **entire** `skills/hephaestus` folder into your agent's skills directory. Keep the policy, references, helper and license files together.
+Install all three names to see both fixer entries in the skill picker. Earlier installations using only `--skill hephaestus` contain the router alone; rerun the command above to add the entries. Add `-g` for a user-level installation across projects. The installer needs Node 22.20+; the report helper and bundled browser tools need Node 22+. Manual installation is possible: copy each desired **entire** folder from `skills/` into your agent's skills directory. Each entry is self-contained, including policies, helper, logo and licenses; frontend-capable entries also include Taste.
 
 The package uses the [Agent Skills format](https://agentskills.io/specification). The [skills CLI](https://github.com/vercel-labs/skills) handles agent-specific locations. Codex and Claude Code project-local package installation is tested. Cursor and other compatible agents can read the format; their complete workflows have not been exercised here. A plain chat model can read the instructions but needs filesystem, execution and browser tools to perform repairs.
 
@@ -51,11 +51,11 @@ The package uses the [Agent Skills format](https://agentskills.io/specification)
 In Codex, invoke `$hephaestus`. In Claude Code, invoke `/hephaestus`. On the first explicit invocation in a chat, the skill presents its logo and [short welcome README](skills/hephaestus/README.md), then offers **Hephaestus: Frontend Fixer** and **Hephaestus: Backend Fixer** if the target is unclear. The image and welcome are bundled with the installation. Inline image rendering depends on the host; text and a usable image link are the fallback. Ask for “Hephaestus about” or its README to see the welcome again. Choose directly with:
 
 ```text
-$hephaestus frontend
-$hephaestus backend
+$hephaestus-frontend
+$hephaestus-backend
 ```
 
-Claude Code uses `/hephaestus frontend` or `/hephaestus backend`. The phrases `hephaestus:frontend fixer` and `hephaestus:backend fixer` also select the named modes in a prompt; they are not separately registered slash commands. For example:
+These are real installable picker entries named **Hephaestus: Frontend Fixer** and **Hephaestus: Backend Fixer**. Claude Code uses `/hephaestus-frontend` or `/hephaestus-backend`. The router still accepts `$hephaestus frontend` and `$hephaestus backend`. When its target is unclear, it uses the host's native choice UI where available. No colon-namespaced plugin command is registered. For example:
 
 ```text
 Use Hephaestus to audit this frontend first. Preserve our approved brand and real
@@ -72,11 +72,13 @@ For backend work, request the actual project and desired audit/repair scope, wit
 | --- | --- |
 | [SKILL.md](skills/hephaestus/SKILL.md) | Portable audit, repair and verification workflow |
 | [Welcome README](skills/hephaestus/README.md) | In-chat introduction, bundled logo and fixer choices |
+| [Frontend entry](skills/hephaestus-frontend/SKILL.md) / [backend entry](skills/hephaestus-backend/SKILL.md) | Independently installable, directly selectable fixers |
 | [Frontend policy](skills/hephaestus/policy/frontend-policy.json) | All 30 supplied standards; FF-026 aliases FF-024 |
 | [Backend workflow](skills/hephaestus/references/backend.md) | Real server audit/repair procedure and security boundaries |
 | [Backend policy](skills/hephaestus/policy/backend-policy.json) | BF-001 to BF-007: the seven mandatory security areas |
 | [Report contract](skills/hephaestus/references/report.md) | Evidence, checks, owner exceptions and truthful issue statuses |
 | [Taste-derived reference](skills/hephaestus/references/taste.md) | Product-specific composition and visual critique |
+| [Bundled Taste](skills/hephaestus/vendor/taste/UPSTREAM.md) | Pinned direction libraries, page/app draws, source lint, browser inspection and detailed design references |
 | [Report checker](skills/hephaestus/scripts/check-report.mjs) | Local, dependency-free JSON consistency checks |
 | [Evaluation cases](evals/evals.json) | Scope, brand, async states, backend handoff and runtime-unavailable scenarios |
 | [Architecture](docs/arc.md) / [product specification](docs/pro.md) | Owner-supplied source documents, preserved as provided |
@@ -84,6 +86,8 @@ For backend work, request the actual project and desired audit/repair scope, wit
 The skill guides the host agent through all policy entries. It is **not** a standalone scanner with 30 automated detectors, a hosted repair dashboard, or a new model. Syntax-aware inspection, edits and browser testing use the host's available tools and the target project's stack. No extra model API or service account is required.
 
 The [implementation mapping](docs/frontend-skill.md) explains how the app-shaped source specifications were translated into a skill. A hosted FastAPI/PostgreSQL service, React control panel and upload services remain deferred. Backend Fixer runs in the host agent against the user's existing stack.
+
+Frontend Fixer includes the usable MIT-licensed Taste implementation at upstream commit `6010f91a9935f1c167dfc500fb1a475681892e6b`, with attribution. Read [the integration guide](skills/hephaestus/references/taste.md) before using its tools. Hephaestus keeps its own policy and approved brand decisions, disables mandatory media/motion quotas, and accepts public dev-server URLs for inspection instead of serving private source directories. No external media/font assets are bundled. The upstream snapshot has no complete scene catalogue or implementations.
 
 ## Verification
 
@@ -94,6 +98,8 @@ npm test
 npm run test:coverage
 npm run check
 ```
+
+After editing the canonical `skills/hephaestus` package, run `npm run package:skills` to refresh the committed standalone entries. Tests regenerate them in isolation and reject drift. Coverage excludes third-party `vendor/` sources; separate integration tests exercise their draws, lint and safe inspection boundary without claiming upstream coverage.
 
 For a target-project report, resolve the installed skill folder:
 
@@ -126,4 +132,4 @@ This screen and its response service are synthetic test material. No account, AP
 
 ## Attribution
 
-Hephaestus is [MIT licensed](LICENSE). Its frontend reference adapts workflow ideas from [Leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) at commit `6010f91a9935f1c167dfc500fb1a475681892e6b`. [Notices and the upstream MIT license](skills/hephaestus/THIRD_PARTY_NOTICES.md) are included. No upstream media or font assets are bundled.
+Hephaestus is [MIT licensed](LICENSE). Its frontend workflow and bundled design tools incorporate [Leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) at commit `6010f91a9935f1c167dfc500fb1a475681892e6b`. [Notices and the upstream MIT license](skills/hephaestus/THIRD_PARTY_NOTICES.md) describe the included source and Hephaestus modifications. No upstream media or font files are bundled.
