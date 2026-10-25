@@ -4,8 +4,8 @@ import { readFileSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const policy = JSON.parse(readFileSync(new URL('../policy/frontend-policy.json', import.meta.url), 'utf8'));
-const rules = new Map(policy.rules.map(rule => [rule.id, rule]));
+const policies = Object.fromEntries(['frontend', 'backend'].map(target => [target,
+  JSON.parse(readFileSync(new URL(`../policy/${target}-policy.json`, import.meta.url), 'utf8'))]));
 const text = value => typeof value === 'string' && value.trim().length > 0;
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const path = value => text(value) && !/^(?:[/\\]|[a-z]:)/i.test(value) && !value.split(/[/\\]/).some(part => part === '..' || part === '' || part === '.');
@@ -16,6 +16,9 @@ export function validateReport(report) {
   const counts = {};
   const result = ready => ({ valid: errors.length === 0, ready: ready && errors.length === 0, counts, errors });
   if (!object(report)) { errors.push('Report must be an object.'); return result(false); }
+  const target = report.target === undefined ? 'frontend' : report.target;
+  if (!['frontend', 'backend'].includes(target)) { errors.push('Target must be frontend or backend.'); return result(false); }
+  const rules = new Map(policies[target].rules.map(rule => [rule.id, rule]));
   if (report.schema_version !== 1 || !['audit', 'repair'].includes(report.mode) || !text(report.baseline)) errors.push('Supply schema_version 1, audit/repair mode and a baseline revision or snapshot.');
   for (const field of ['findings', 'checks', 'approved_files', 'changed_files', 'required_checks']) {
     if (!Array.isArray(report[field])) errors.push(`${field} must be an array.`);
@@ -27,13 +30,19 @@ export function validateReport(report) {
 
   const checks = new Map();
   for (const check of report.checks) {
-    if (!object(check) || !identifier(check.id) || !text(check.kind) || !['pass', 'fail', 'skipped', 'needs_review'].includes(check.status) || !text(check.evidence)) {
+    if (!object(check) || !identifier(check.id) || !text(check.kind) || !['pass', 'fail', 'skipped', 'needs_review', 'not_applicable'].includes(check.status) || !text(check.evidence)) {
       errors.push('Each check needs an identifier, kind, explicit status and an evidence observation.'); continue;
     }
+    if (check.status === 'not_applicable' && (target !== 'backend' || !rules.get(check.id)?.allow_not_applicable || !text(check.reason))) errors.push('Only an absent backend auth, database or rate-limit surface can be not_applicable, with a reason and evidence.');
     if (checks.has(check.id)) errors.push('Check identifiers must be unique.');
     checks.set(check.id, check);
   }
   for (const id of report.required_checks) if (!checks.has(id)) errors.push('A required check has no result.');
+  if (target === 'backend') {
+    for (const id of rules.keys()) {
+      if (!report.required_checks.includes(id) || checks.get(id)?.kind !== 'security') errors.push(`Backend reports require security check ${id} in required_checks.`);
+    }
+  }
 
   const seen = new Map();
   const ids = new Set();
@@ -47,7 +56,8 @@ export function validateReport(report) {
     if (finding.file != null && !path(finding.file)) errors.push('Finding files must be project-relative.');
     if (finding.route != null && (!text(finding.route) || !finding.route.startsWith('/'))) errors.push('Finding routes must start with /.');
     if (finding.lines != null && (!object(finding.lines) || !Number.isInteger(finding.lines.start) || finding.lines.start < 1 || !Number.isInteger(finding.lines.end) || finding.lines.end < finding.lines.start)) errors.push('Invalid source line range.');
-    if (!Array.isArray(finding.evidence) || !finding.evidence.length || finding.evidence.some(e => !object(e) || !['source', 'browser', 'screenshot', 'owner'].includes(e.kind) || !text(e.summary))) errors.push('A finding needs source, browser, screenshot or owner evidence.');
+    const evidenceKinds = target === 'backend' ? ['source', 'test', 'runtime', 'owner'] : ['source', 'browser', 'screenshot', 'owner'];
+    if (!Array.isArray(finding.evidence) || !finding.evidence.length || finding.evidence.some(e => !object(e) || !evidenceKinds.includes(e.kind) || !text(e.summary))) errors.push(`A ${target} finding needs supported evidence with a summary.`);
     for (const field of ['why_it_matters', 'proposed_change', 'regression_risk']) if (!text(finding[field])) errors.push(`Finding is missing ${field}.`);
     if (!Array.isArray(finding.verification_checks)) { errors.push('Finding verification_checks must be an array.'); continue; }
 
@@ -61,11 +71,18 @@ export function validateReport(report) {
     if (finding.status === 'verified') {
       const refs = finding.verification_checks.map(id => checks.get(id));
       if (!refs.length || refs.some(check => !check || check.status !== 'pass')) errors.push('Verified findings require passing referenced checks.');
-      if (!text(finding.route) || [390, 768, 1440].some(width => !refs.some(check => check?.kind === 'browser' && check.status === 'pass' && check.width === width && check.route === finding.route))) errors.push('Verified frontend findings require passing browser evidence at 390, 768 and 1440 for their route.');
+      if (target === 'frontend') {
+        if (!text(finding.route) || [390, 768, 1440].some(width => !refs.some(check => check?.kind === 'browser' && check.status === 'pass' && check.width === width && check.route === finding.route))) errors.push('Verified frontend findings require passing browser evidence at 390, 768 and 1440 for their route.');
+      } else if (!finding.verification_checks.includes(rule.id) || checks.get(rule.id)?.status !== 'pass' || !refs.some(check => ['tests', 'integration', 'api'].includes(check?.kind) && check.status === 'pass')) {
+        errors.push('Verified backend findings require their passing security gate and a passing behavior test.');
+      }
     }
   }
   for (const file of report.changed_files) if (!report.findings.some(finding => finding?.file === file && finding.status !== 'waived')) errors.push('Every changed file must map to an active finding.');
-  const ready = report.mode === 'repair' && report.required_checks.length > 0 && report.required_checks.every(id => checks.get(id)?.status === 'pass') && !report.checks.some(check => check?.status === 'fail') && report.findings.every(finding => ['verified', 'waived'].includes(finding?.status));
+  const ready = report.mode === 'repair' && report.required_checks.length > 0
+    && report.required_checks.every(id => checks.get(id)?.status === 'pass' || (target === 'backend' && checks.get(id)?.status === 'not_applicable'))
+    && (target !== 'backend' || report.required_checks.some(id => ['tests', 'integration', 'api'].includes(checks.get(id)?.kind) && checks.get(id)?.status === 'pass'))
+    && !report.checks.some(check => check?.status === 'fail') && report.findings.every(finding => ['verified', 'waived'].includes(finding?.status));
   return result(ready);
 }
 
